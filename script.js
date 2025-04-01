@@ -5,6 +5,8 @@ async function fetchAlbums() {
         const response = await fetch(sheetURL);
         const data = await response.json();
 
+        console.log(data);  // Add a console log to see the data structure
+
         if (data.length === 0) {
             console.error("No data found in the sheet");
             return;
@@ -12,6 +14,8 @@ async function fetchAlbums() {
 
         // Get the latest album (last row)
         const latestAlbum = data[data.length - 1];
+
+        console.log(latestAlbum);  // Log the latest album data
 
         const currentAlbum = document.getElementById("current-album");
         if (currentAlbum) {
