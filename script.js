@@ -1,4 +1,4 @@
-const sheetURL = "https://opensheet.elk.sh/2PACX-1vThbR473UBAX8180UMsGB9nwVuZ0-J3tjKIuN1jLqYOfeZKRXZsJVcSPUI-lpJoLzLLXXe__9utoFoA/json";
+const sheetURL = "https://opensheet.elk.sh/d/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
 
 async function fetchAlbums() {
     try {
