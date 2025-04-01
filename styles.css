@@ -1,7 +1,7 @@
 /* General Body Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1C1C1C; /* Dark background to evoke sophistication */
+    background-color: #212121; /* Dark background to evoke sophistication */
     color: #fff; /* White text for contrast */
     text-align: center;
     margin: 0;
@@ -10,48 +10,50 @@ body {
 
 /* Header Styling */
 h1 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #f7c93c; /* Gold/whiskey color */
+    font-size: 3rem;
+    font-weight: 600;
+    color: #f5c34b; /* Gold/whiskey color */
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 /* Album Container Styling (Sleek and Modern) */
 .album-container {
-    background-color: #333; /* Dark, elegant background */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
-    max-width: 500px;
+    background-color: #333; /* Deep, dark background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    max-width: 600px;
     margin: 40px auto;
 }
 
 /* Album Title */
 h2 {
-    font-size: 1.8rem;
-    color: #f7c93c; /* Gold color */
-    margin-bottom: 15px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f5c34b; /* Gold color for contrast */
+    margin-bottom: 20px;
 }
 
 /* Album Cover Styling */
 .album-cover {
     width: 100%;
     max-width: 400px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    margin: 25px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .album-cover:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.8);
 }
 
 /* Back Link Styling (Sleek and Refined) */
 .back-link {
-    font-size: 1.2rem;
-    color: #f7c93c; /* Matching gold/whiskey theme */
+    font-size: 1.5rem;
+    color: #f5c34b; /* Whiskey gold theme */
     text-decoration: none;
     font-weight: 600;
     margin-top: 20px;
@@ -59,15 +61,105 @@ h2 {
 
 .back-link:hover {
     text-decoration: underline;
+    color: #e1b000;
 }
 
-/* Small tweaks for better mobile responsiveness */
+/* Grid Page */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.album-item {
+    position: relative;
+    background-color: #444;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.album-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.8);
+}
+
+.album-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f5c34b;
+    position: absolute;
+    bottom: 30px;
+    left: 16px;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.album-item p {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    font-size: 1rem;
+    color: white;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.album-item .date {
+    position: absolute;
+    right: 16px;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Make the whole grid item a clickable link */
+.album-item a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    z-index: 1;
+}
+
+/* Back Link Styling for Grid Page */
+.back-link {
+    font-size: 1.5rem;
+    color: #f5c34b;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+
+.back-link:hover {
+    color: #e1b000;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
+
     .album-container {
-        width: 90%;
         padding: 20px;
+        max-width: 90%;
+    }
+
+    .album-item {
+        height: 250px;
     }
 }
