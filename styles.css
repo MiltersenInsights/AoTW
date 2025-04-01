@@ -1,17 +1,63 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Playfair Display', serif; /* Elegant serif for a refined look */
+    background-color: #1b1b1b; /* Dark whiskey-bar background */
+    color: #e0e0e0; /* Soft, warm white for readability */
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.album {
-    display: inline-block;
-    margin: 10px;
-    text-align: center;
-}
-
-.album img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+.album-container {
+    background: rgba(30, 30, 30, 0.95);
+    padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    margin: 40px auto;
+    border: 1px solid #c49a6c; /* Whiskey-gold accent */
+}
+
+h1 {
+    font-size: 36px;
+    color: #c49a6c; /* Warm gold */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+p {
+    font-size: 18px;
+    color: #b8b8b8;
+}
+
+.album-cover {
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album-cover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+a {
+    color: #c49a6c; /* Whiskey-gold */
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e6b17e; /* Slightly lighter gold */
 }
