@@ -14,21 +14,35 @@
         }
 
         .album-item {
+            position: relative;
             border: 2px solid #ddd;
             padding: 16px;
             border-radius: 8px;
             text-align: center;
             background-color: #f9f9f9;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            height: 300px; /* Adjust the height as needed */
         }
 
         .album-item h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-size: 18px;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .album-item p {
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
             font-size: 14px;
-            color: #555;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .back-link {
@@ -71,11 +85,16 @@
                     const albumItem = document.createElement("div");
                     albumItem.classList.add("album-item");
 
+                    // Check if there's a cover image URL
+                    const coverImage = album["Cover Image"] || "https://via.placeholder.com/200"; // Default placeholder if no image
+
+                    // Set the background image to the cover image URL
+                    albumItem.style.backgroundImage = `url(${coverImage})`;
+
                     // Create the HTML content for each album
                     albumItem.innerHTML = `
                         <h3>${album.Album}</h3>
                         <p>Posted by: ${album["Posted by"]}</p>
-                        <p>Date: ${album.Date}</p>
                     `;
 
                     // Append the album item to the grid
