@@ -1,15 +1,32 @@
-fetch('albums.json')
-  .then(response => response.json())
-  .then(data => {
-      let latestAlbum = data[0]; // Assuming the latest album is first in the JSON
+const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
 
-      document.getElementById('album-title').textContent = latestAlbum.Album;
-      document.getElementById('posted-by').textContent = latestAlbum["Posted by"];
-      document.getElementById('posted-date').textContent = latestAlbum.Date;
+async function fetchAlbums() {
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.json();
 
-      document.getElementById('album-cover').src = latestAlbum.Cover;
-      document.getElementById('album-cover').alt = `Cover of ${latestAlbum.Album}`;
+        console.log(data);  // Add a console log to see the data structure
 
-      document.getElementById('spotify-link').href = latestAlbum.Spotify;
-  })
-  .catch(error => console.error('Error loading album:', error));
+        if (data.length === 0) {
+            console.error("No data found in the sheet");
+            return;
+        }
+
+        // Get the latest album (last row)
+        const latestAlbum = data[data.length - 1];
+
+        console.log(latestAlbum);  // Log the latest album data
+
+        const currentAlbum = document.getElementById("current-album");
+        if (currentAlbum) {
+            currentAlbum.innerHTML = `<h2>${latestAlbum["Album"]}</h2>
+                                      <p>Posted by: ${latestAlbum["Posted by"]} on ${latestAlbum["Date"]}</p>`;
+        }
+
+    } catch (error) {
+        console.error("Error fetching album data", error);
+    }
+}
+
+// Run function when page loads
+fetchAlbums();
