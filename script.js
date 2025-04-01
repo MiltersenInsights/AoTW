@@ -1,27 +1,28 @@
-const sheetURL = "https://opensheet.elk.sh/2PACX-1vThbR473UBAX8180UMsGB9nwVuZ0-J3tjKIuN1jLqYOfeZKRXZsJVcSPUI-lpJoLzLLXXe__9utoFoA/Sheet1";
+const sheetURL = "https://opensheet.elk.sh/2PACX-1vThbR473UBAX8180UMsGB9nwVuZ0-J3tjKIuN1jLqYOfeZKRXZsJVcSPUI-lpJoLzLLXXe__9utoFoA/json";
 
 async function fetchAlbums() {
     try {
         const response = await fetch(sheetURL);
         const data = await response.json();
 
-        // Show the latest album
-        const currentAlbum = document.getElementById("current-album");
-        currentAlbum.innerHTML = `<h2>${data[0].Album} by ${data[0].Artist} (${data[0].Year})</h2>`;
-
-        // Show all albums in a grid
-        const albumGrid = document.getElementById("album-grid");
-        if (albumGrid) {
-            albumGrid.innerHTML = data.map(album => `
-                <div class="album">
-                    <img src="${album.Cover}" alt="${album.Album}">
-                    <p>${album.Album} - ${album.Artist} (${album.Year})</p>
-                </div>
-            `).join("");
+        if (data.length === 0) {
+            console.error("No data found in the sheet");
+            return;
         }
+
+        // Get the latest album (assuming the most recent is at the bottom)
+        const latestAlbum = data[data.length - 1];
+
+        const currentAlbum = document.getElementById("current-album");
+        if (currentAlbum) {
+            currentAlbum.innerHTML = `<h2>${latestAlbum["Album name"]}</h2>
+                                      <p>Posted by: ${latestAlbum["Person who posted it"]} on ${latestAlbum["Date Posted"]}</p>`;
+        }
+
     } catch (error) {
         console.error("Error fetching album data", error);
     }
 }
 
+// Call function
 fetchAlbums();
