@@ -45,6 +45,7 @@
             height: 300px;
             transition: transform 0.2s, box-shadow 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            overflow: hidden; /* Ensures overflow text is hidden */
         }
 
         .album-item:hover {
@@ -52,22 +53,34 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* Enhanced shadow on hover */
         }
 
-        .album-item h3,
+        /* Album Title Styling - Handling long titles */
+        .album-item h3 {
+            position: absolute;
+            left: 16px;
+            bottom: 30px;
+            font-size: 18px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            white-space: normal; /* Allow text to wrap */
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: calc(100% - 32px); /* Ensure title doesn't overflow */
+        }
+
+        /* Text for "Posted by" and "Date" */
         .album-item p {
             position: absolute;
             left: 16px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .album-item h3 {
-            bottom: 30px;
-            font-size: 18px;
-        }
-
-        .album-item p {
             bottom: 10px;
             font-size: 14px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            max-width: calc(100% - 32px); /* Ensure it doesn't spill out */
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .album-item .date {
