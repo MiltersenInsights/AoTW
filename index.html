@@ -30,6 +30,7 @@
             max-width: 400px;
             margin: 20px auto;
             border-radius: 8px;
+            cursor: pointer;
         }
 
         .back-link {
@@ -62,22 +63,4 @@
 
                 if (data.length > 0) {
                     const currentAlbum = data[data.length - 1]; // Get the last posted album
-                    const albumContainer = document.getElementById("albumOfTheWeek");
-
-                    // Add album name, posted by, and date
-                    albumContainer.innerHTML = `
-                        <h2>${currentAlbum.Album}</h2>
-                        <p>Posted by: ${currentAlbum["Posted by"]}</p>
-                        <p>Date: ${currentAlbum.Date}</p>
-                        <img class="album-cover" src="${currentAlbum['Cover Image'] || 'https://via.placeholder.com/200'}" alt="${currentAlbum.Album}" />
-                    `;
-                }
-            } catch (error) {
-                console.error("Error fetching album data:", error);
-            }
-        }
-
-        fetchAlbumOfTheWeek();
-    </script>
-</body>
-</html>
+                    const albumContainer = document
