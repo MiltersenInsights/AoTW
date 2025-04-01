@@ -15,8 +15,8 @@ async function fetchAlbums() {
 
         const currentAlbum = document.getElementById("current-album");
         if (currentAlbum) {
-            currentAlbum.innerHTML = `<h2>${latestAlbum["Album name"]}</h2>
-                                      <p>Posted by: ${latestAlbum["Person who posted it"]} on ${latestAlbum["Date Posted"]}</p>`;
+            currentAlbum.innerHTML = `<h2>${latestAlbum["Album"]}</h2>
+                                      <p>Posted by: ${latestAlbum["Posted by"]} on ${latestAlbum["Date"]}</p>`;
         }
 
     } catch (error) {
