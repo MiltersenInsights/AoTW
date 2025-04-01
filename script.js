@@ -1,4 +1,4 @@
-const sheetURL = "https://opensheet.elk.sh/d/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/Sheet1";
+const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
 
 async function fetchAlbums() {
     try {
@@ -10,7 +10,7 @@ async function fetchAlbums() {
             return;
         }
 
-        // Get the latest album (assuming the most recent is at the bottom)
+        // Get the latest album (last row)
         const latestAlbum = data[data.length - 1];
 
         const currentAlbum = document.getElementById("current-album");
@@ -24,5 +24,5 @@ async function fetchAlbums() {
     }
 }
 
-// Call function
+// Run function when page loads
 fetchAlbums();
