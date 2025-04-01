@@ -23,12 +23,13 @@
             color: white;
             background-size: cover;
             background-position: center;
+            aspect-ratio: 1; /* Keeps the grid square */
             height: 300px; /* Adjust the height as needed */
         }
 
         .album-item h3 {
             position: absolute;
-            bottom: 16px;
+            bottom: 30px;
             left: 16px;
             font-size: 18px;
             margin: 0;
@@ -37,6 +38,15 @@
         }
 
         .album-item p {
+            position: absolute;
+            bottom: 10px;
+            left: 16px;
+            font-size: 14px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .album-item .date {
             position: absolute;
             bottom: 10px;
             right: 16px;
@@ -88,13 +98,15 @@
                     // Check if there's a cover image URL
                     const coverImage = album["Cover Image"] || "https://via.placeholder.com/200"; // Default placeholder if no image
 
-                    // Set the background image to the cover image URL
+                    // Set the background image to the cover image URL with opacity
                     albumItem.style.backgroundImage = `url(${coverImage})`;
+                    albumItem.style.backgroundColor = "rgba(0, 0, 0, 0.2)"; // Add slight transparency to cover images
 
                     // Create the HTML content for each album
                     albumItem.innerHTML = `
                         <h3>${album.Album}</h3>
                         <p>Posted by: ${album["Posted by"]}</p>
+                        <p class="date">Date: ${album.Date}</p>
                     `;
 
                     // Append the album item to the grid
