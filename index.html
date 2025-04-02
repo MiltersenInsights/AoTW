@@ -7,17 +7,24 @@
     <title>Album of the Week</title>
 </head>
 <body>
-    <h1>Album of the Week</h1>
-    <p id="posted-date"></p>
-    <div class="album-container">
-    <h2 id="album-title">Album Title</h2>
-    <a id="spotify-link" href="#" target="_blank">
-        <img id="album-cover" class="album-cover" src="" alt="Album Cover" />
-    </a>
+    <div class="background-overlay"></div> <!-- Whiskey/vinyl-inspired backdrop -->
+
+    <div class="content">
+        <h1>Album of the Week</h1>
+        <p id="posted-date" class="date-text"></p>
+
+        <div class="album-container">
+            <p id="poster-comment" class="poster-comment"></p> <!-- Now visible by default -->
+            <h2 id="album-title">Album Title</h2>
+            <a id="spotify-link" href="#" target="_blank">
+                <img id="album-cover" class="album-cover" src="" alt="Album Cover" />
+            </a>
+        </div>
+
+        <p id="posted-by" class="posted-by">- </p>
+        <a href="grid.html" class="back-link">View AoTW Collection</a>
     </div>
-    <p id="poster-comment" class="poster-comment" style="display: none;"></p>
-    <p id="posted-by">- </p>
-    <a href="grid.html" class="back-link">View AoTW Collection</a>
+
     <script src="script.js"></script>
 </body>
 </html>
