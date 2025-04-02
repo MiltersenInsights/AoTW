@@ -18,8 +18,8 @@ fetch("https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/jso
 
       // Update the page content
       document.getElementById("album-title").textContent = albumTitle;
-      document.getElementById("posted-by").textContent = `Posted by: ${postedBy}`;
-      document.getElementById("posted-date").textContent = `Date: ${datePosted}`;
+      document.getElementById("posted-by").textContent = `- ${postedBy}`;
+      document.getElementById("posted-date").textContent = `Posted: ${datePosted}`;
       document.getElementById("album-cover").src = coverImage;
       document.getElementById("album-cover").alt = `Cover of ${albumTitle}`;
       document.getElementById("spotify-link").href = spotifyLink;
