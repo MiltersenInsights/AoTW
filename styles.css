@@ -1,25 +1,32 @@
-/* General Body Styles */
-
+/* ============================= */
+/* 🌙 GENERAL STYLES 🌙 */
+/* ============================= */
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #212121; /* Dark background to evoke sophistication */
+    background-color: #212121; /* Dark background for sophistication */
     color: #fff; /* White text for contrast */
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-/* Header Styling */
+/* ============================= */
+/* 🔥 HEADER STYLING 🔥 */
+/* ============================= */
+
 h1 {
     font-size: 3rem;
     font-weight: 600;
-    color: #f5c34b; /* Gold/whiskey color */
+    color: #f5c34b; /* Whiskey gold */
     margin-top: 50px;
     margin-bottom: 30px;
 }
 
-/* Background overlay for rich, whiskey/vinyl aesthetic */
+/* ============================= */
+/* 🎵 BACKGROUND OVERLAY 🎵 */
+/* ============================= */
+
 .background-overlay {
     position: fixed;
     top: 0;
@@ -31,7 +38,10 @@ h1 {
     z-index: -1;
 }
 
-/* Content container */
+/* ============================= */
+/* 📦 CONTENT CONTAINER 📦 */
+/* ============================= */
+
 .content {
     position: relative;
     text-align: center;
@@ -40,7 +50,10 @@ h1 {
     padding: 40px 20px;
 }
 
-/* Album Container Styling (Mimic Vinyl Sleeve Look) */
+/* ============================= */
+/* 🎧 ALBUM CONTAINER 🎧 */
+/* ============================= */
+
 .album-container {
     position: relative;
     display: flex;
@@ -50,28 +63,31 @@ h1 {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;    
-    background-color: rgba(0, 0, 0, 0.6); /* Subtle dark overlay */
+    background-color: rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-position: center;
     border-radius: 12px;
     transition: transform 0.4s;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
-    border: 1.5px solid rgba(255, 255, 255, 0.15); /* Soft border to mimic record sleeve edge */
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Pseudo-element for an inner shadow effect (mimicking a slight 3D effect) */
+/* Subtle 3D Inner Shadow Effect */
 .album-container::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: 5px;
-    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5); /* Inner vignette effect */
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
 
-/* Poster comment styling */
+/* ============================= */
+/* 💬 ALBUM DETAILS STYLING 💬 */
+/* ============================= */
+
 .poster-comment {
     font-size: 1.2rem;
     font-style: italic;
@@ -80,7 +96,6 @@ h1 {
     opacity: 0.85;
 }
 
-/* Posted by */
 .posted-by {
     font-size: 1.1rem;
     font-weight: 500;
@@ -88,23 +103,13 @@ h1 {
     margin-top: 10px;
 }
 
-/* Album Title & Details */
-.album-container h2,
-.album-container p {
-    color: #f5c34b; /* Whiskey gold */
-    text-align: center;
-    margin: 10px 0;
-}
-
-/* Album Title */
 h2 {
     font-size: 2rem;
     font-weight: 600;
-    color: #f5c34b; /* Gold color for contrast */
+    color: #f5c34b;
     margin-bottom: 20px;
 }
 
-/* Album Cover Styling */
 .album-cover {
     width: 100%;
     max-width: 400px;
@@ -119,10 +124,13 @@ h2 {
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.8);
 }
 
-/* Back Link Styling (Sleek and Refined) */
+/* ============================= */
+/* 🔗 BACK LINK STYLING 🔗 */
+/* ============================= */
+
 .back-link {
     font-size: 1.5rem;
-    color: #f5c34b; /* Whiskey gold theme */
+    color: #f5c34b;
     text-decoration: none;
     font-weight: 600;
     margin-top: 20px;
@@ -133,21 +141,10 @@ h2 {
     color: #e1b000;
 }
 
-/* Poster Comment Styling */
-.poster-comment {
-    font-style: italic;
-    font-size: 1.2rem;
-    color: #f5c34b; /* Whiskey gold */
-    max-width: 500px;
-    margin: 0 auto 15px auto;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
-    border-left: 4px solid #f5c34b;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
+/* ============================= */
+/* 🎨 GRID PAGE STYLING 🎨 */
+/* ============================= */
 
-/* Grid Page */
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -157,7 +154,10 @@ h2 {
     max-width: 1200px;
 }
 
-/* Vinyl Record Cover Effect for Grid Items */
+/* ============================= */
+/* 🎵 VINYL RECORD COVER LOOK 🎵 */
+/* ============================= */
+
 .album-item {
     position: relative;
     border-radius: 5px;
@@ -168,20 +168,18 @@ h2 {
     height: 300px;
     transition: transform 0.4s;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Outer glow for depth */
-    
-    /* Inner shadow (vignette effect) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     background-blend-mode: multiply;
-    border: 1.5px solid rgba(255, 255, 255, 0.1); /* Soft border to mimic record sleeve edge */
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Adding a pseudo-element for an inner shadow effect */
+/* Inner Shadow Effect for Vinyl Aesthetic */
 .album-item::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: 5px;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* Inner shadow for slight vignette */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
 
@@ -190,6 +188,7 @@ h2 {
     transform: scale(1.05);
 }
 
+/* Album Item Details */
 .album-item h3 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -228,43 +227,35 @@ h2 {
     top: 0;
     left: 0;
     text-decoration: none;
-    z-index: 2; /* Ensure it's above other elements */
+    z-index: 2;
 }
 
-/* Back Link Styling for Grid Page */
-.back-link {
-    font-size: 1.5rem;
-    color: #f5c34b;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 30px;
-    display: block;
-    text-align: center;
-}
-
-.back-link:hover {
-    color: #e1b000;
-}
+/* ============================= */
+/* 🎵 CUSTOM SCROLLBAR 🎵 */
+/* ============================= */
 
 /* For Webkit-based browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-    width: 10px; /* Scrollbar width */
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1C1C1C; /* Dark background */
+    background: #1C1C1C;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #f7c93c; /* Whiskey gold */
+    background: #f7c93c;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #d4a637; /* Darker whiskey gold */
+    background: #d4a637;
 }
 
-/* Responsive Styles */
+/* ============================= */
+/* 📱 RESPONSIVE STYLES 📱 */
+/* ============================= */
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
