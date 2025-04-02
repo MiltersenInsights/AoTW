@@ -1,4 +1,7 @@
 /* General Body Styles */
+
+background: url('https://milterseninsights.github.io/AoTW/assets/whiskeyandvinyl.png') center/cover no-repeat, #1c1c1c;
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #212121; /* Dark background to evoke sophistication */
