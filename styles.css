@@ -92,6 +92,20 @@ h2 {
     color: #e1b000;
 }
 
+/* Poster Comment Styling */
+.poster-comment {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #f5c34b; /* Whiskey gold */
+    max-width: 500px;
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+    border-left: 4px solid #f5c34b;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 /* Grid Page */
 .album-grid {
     display: grid;
