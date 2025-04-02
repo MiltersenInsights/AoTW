@@ -228,7 +228,7 @@ h2 {
     top: 0;
     left: 0;
     text-decoration: none;
-    z-index: 1;
+    z-index: 2; /* Ensure it's above other elements */
 }
 
 /* Back Link Styling for Grid Page */
