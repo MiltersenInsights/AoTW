@@ -112,12 +112,13 @@ h1 {
                     const spotifyLink = album["Spotify Link"] || "#"; // Use # if no link
 
                     albumItem.style.backgroundImage = `url(${coverImage})`;
-
                     albumItem.innerHTML = `
                         <a href="${spotifyLink}" target="_blank"></a> 
-                        <h3>${album.Album}</h3>
-                        <p>Posted by: ${album["Posted by"]}</p>
-                        <p class="date">Date: ${album.Date}</p>
+                        <div class="album-info">
+                            <h3>${album.Album}</h3>
+                            <p>Posted by: ${album["Posted by"]}</p>
+                            <p class="date">Date: ${album.Date}</p>
+                        </div>
                     `;
 
                     albumGrid.appendChild(albumItem);
