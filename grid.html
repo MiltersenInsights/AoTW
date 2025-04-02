@@ -114,44 +114,51 @@
     <br></br>
     
     <script>
-        const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
+const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
 
-        async function fetchAlbums() {
-            try {
-                const response = await fetch(sheetURL);
-                const data = await response.json();
-                const albumGrid = document.getElementById("albumGrid");
+async function fetchAlbums() {
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.json();
+        const albumGrid = document.getElementById("albumGrid");
 
-                if (data.length === 0) {
-                    albumGrid.innerHTML = "<p>No albums found</p>";
-                    return;
-                }
-
-                data.forEach(album => {
-                    const albumItem = document.createElement("div");
-                    albumItem.classList.add("album-item");
-
-                    const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
-                    const spotifyLink = album["Spotify Link"] || "#"; // Use # if no link
-
-                    albumItem.style.backgroundImage = `url(${coverImage})`;
-                    albumItem.innerHTML = `
-                        <a href="${spotifyLink}" target="_blank"></a> 
-                        <div class="album-info">
-                            <h3>${album.Album}</h3>
-                            <p>Posted by: ${album["Posted by"]}</p>
-                            <p class="date">Date: ${album.Date}</p>
-                        </div>
-                    `;
-
-                    albumGrid.appendChild(albumItem);
-                });
-            } catch (error) {
-                console.error("Error fetching albums:", error);
-            }
+        if (data.length === 0) {
+            albumGrid.innerHTML = "<p>No albums found</p>";
+            return;
         }
 
-        fetchAlbums();
+        data.forEach(album => {
+            const albumItem = document.createElement("div");
+            albumItem.classList.add("album-item");
+
+            const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
+            const spotifyLink = album["Spotify Link"] || "#"; // Use # if no link
+
+            // Wrap entire album div in an <a> tag
+            const link = document.createElement("a");
+            link.href = spotifyLink;
+            link.target = "_blank"; // Open in new tab
+            link.style.display = "block"; // Ensure full clickable area
+
+            albumItem.style.backgroundImage = `url(${coverImage})`;
+            albumItem.innerHTML = `
+                <div class="album-info">
+                    <h3>${album.Album}</h3>
+                    <p>Posted by: ${album["Posted by"]}</p>
+                    <p class="date">Date: ${album.Date}</p>
+                </div>
+            `;
+
+            link.appendChild(albumItem);
+            albumGrid.appendChild(link); // Append the clickable link, not just the div
+        });
+    } catch (error) {
+        console.error("Error fetching albums:", error);
+    }
+}
+
+fetchAlbums();
+
     </script>
 </body>
 </html>
