@@ -44,16 +44,16 @@
         }
 
         /* Transparent Album Info Box */
+        .album-info {
             position: absolute;
             bottom: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.6);
-            padding: 15px 10px;
+            padding: 15px 10px; /* Increased padding for better spacing */
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Aligns all text to the left */
             text-align: left;
-            z-index: 0; /* Keep info under control */
         }
 
         /* Album Title */
@@ -75,11 +75,6 @@
             color: #FAF9F6; /* Off white */
             padding-top: 5px;
             margin: 2px 0;
-            z-index: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            width: 100%;
         }
 
         /* Back Link */
@@ -195,27 +190,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         });
 
-        // 🔁 Sorting functionality
-        const sortSelect = document.getElementById("sortSelect");
-        sortSelect.addEventListener("change", () => {
-            const sortBy = sortSelect.value;
-        
-            let sorted = [...allAlbums];
-            if (sortBy === "newest") {
-                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (sortBy === "oldest") {
-                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (sortBy === "az") {
-                sorted.sort((a, b) => a.title.localeCompare(b.title));
-            } else if (sortBy === "za") {
-                sorted.sort((a, b) => b.title.localeCompare(a.title));
-            }
-        
-            albumGrid.innerHTML = "";
-            sorted.forEach(item => albumGrid.appendChild(item.element));
-        });
-
-        
         document.body.classList.add("loaded");
     } catch (error) {
         console.error("Error loading albums:", error);
