@@ -22,6 +22,11 @@ body.loaded {
     opacity: 1;
 }
 
+/* Hide the album grid if it's accidentally included in index.html */
+body:not(.grid-page) .album-grid {
+    display: none !important;
+}
+
 /* ============================= */
 /* 🔥 HEADER STYLING 🔥 */
 /* ============================= */
