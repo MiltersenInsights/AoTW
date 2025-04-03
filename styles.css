@@ -63,6 +63,34 @@ h1 {
   text-decoration: underline;
 }
 
+.floating-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* Slim footer */
+  background: rgba(0, 0, 0, 0.5); /* Transparent dark vinyl feel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.back-link-footer {
+  color: #f5c34b;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-link-footer:hover {
+  text-decoration: underline;
+  color: #ffd666;
+}
+
 /* ============================= */
 /* 🎵 BACKGROUND OVERLAY 🎵 */
 /* ============================= */
