@@ -51,3 +51,8 @@ fetch("https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/jso
       });
   })
   .catch(error => console.error("Error loading album:", error));
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("loaded");
+});
+
