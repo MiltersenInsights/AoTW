@@ -1,58 +1,75 @@
-fetch("https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json")
-  .then(response => response.json())
-  .then(data => {
-      if (data.length === 0) {
-          console.error("No albums found");
-          return;
-      }
+const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
 
-      let latestAlbum = data[data.length - 1]; // Get the last posted album
+async function fetchAlbums() {
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.json();
 
-      // Extract album details
-      const albumTitle = latestAlbum.Album || "Unknown Album";
-      const postedBy = latestAlbum["Posted by"] || "Unknown";
-      const datePosted = latestAlbum.Date || "Unknown Date";
-      const coverImage = latestAlbum["Cover Image"] || "https://via.placeholder.com/400";
-      const spotifyLink = latestAlbum["Spotify Link"] || "#";
-      const posterComment = latestAlbum["Poster Comment"] || "";
+        if (data.length === 0) {
+            console.error("No albums found");
+            return;
+        }
 
-      // Update the page content
-      document.getElementById("album-title").textContent = albumTitle;
-      document.getElementById("posted-by").textContent = `- ${postedBy}`;
-      document.getElementById("posted-date").textContent = `Posted: ${datePosted}`;
-      document.getElementById("album-cover").src = coverImage;
-      document.getElementById("album-cover").alt = `Cover of ${albumTitle}`;
-      document.getElementById("spotify-link").href = spotifyLink;
+        const albumGrid = document.getElementById("albumGrid"); // Exists only in grid.html
 
-      // Handle the optional poster comment
-      const commentElement = document.getElementById("poster-comment");
-      if (posterComment) {
-          commentElement.textContent = `"${posterComment}"`;
-          commentElement.style.display = "block"; // Show it if there is a comment
-      } else {
-          commentElement.style.display = "none"; // Hide if no comment
-      }
+        if (albumGrid) {
+            // ✅ We are on grid.html, load multiple albums
+            data.forEach(album => {
+                const albumItem = document.createElement("div");
+                albumItem.classList.add("album-item");
 
-      // Fix mobile issue: Ensure entire album cover is clickable
-      document.querySelectorAll(".album-item a").forEach(link => {
-          link.addEventListener("click", function (event) {
-              event.preventDefault(); // Prevent default browser opening
+                const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
+                const spotifyLink = album["Spotify Link"] || "#";
 
-              const spotifyAppURL = spotifyLink.replace("https://open.spotify.com/", "spotify://");
+                const link = document.createElement("a");
+                link.href = spotifyLink;
+                link.target = "_blank";
+                link.style.display = "block";
 
-              // Try to open Spotify app first
-              window.location.href = spotifyAppURL;
+                albumItem.style.backgroundImage = `url(${coverImage})`;
+                albumItem.innerHTML = `
+                    <div class="album-info">
+                        <h3>${album.Album}</h3>
+                        <div class="album-meta">
+                            <span>Posted by: ${album["Posted by"]} </span>
+                            <span> on ${album.Date}</span>
+                        </div>
+                    </div>
+                `;
 
-              // If app is not installed, fallback to browser after 500ms
-              setTimeout(() => {
-                  window.open(spotifyLink, "_blank");
-              }, 500);
-          });
-      });
-  })
-  .catch(error => console.error("Error loading album:", error));
+                link.appendChild(albumItem);
+                albumGrid.appendChild(link);
+            });
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.add("loaded");
-});
+            // ✅ Ensure body is visible only after albums are loaded
+            document.body.classList.add("loaded");
+        } else {
+            // ✅ We are on index.html, load only the latest album
+            let latestAlbum = data[data.length - 1];
 
+            document.getElementById("album-title").textContent = latestAlbum.Album || "Unknown Album";
+            document.getElementById("posted-by").textContent = `- ${latestAlbum["Posted by"] || "Unknown"}`;
+            document.getElementById("posted-date").textContent = `Posted: ${latestAlbum.Date || "Unknown Date"}`;
+            document.getElementById("album-cover").src = latestAlbum["Cover Image"] || "https://via.placeholder.com/400";
+            document.getElementById("album-cover").alt = `Cover of ${latestAlbum.Album}`;
+            document.getElementById("spotify-link").href = latestAlbum["Spotify Link"] || "#";
+
+            const commentElement = document.getElementById("poster-comment");
+            if (latestAlbum["Poster Comment"]) {
+                commentElement.textContent = `"${latestAlbum["Poster Comment"]}"`;
+                commentElement.style.display = "block";
+            } else {
+                commentElement.style.display = "none";
+            }
+
+            // ✅ Body should be visible once data is set
+            document.body.classList.add("loaded");
+        }
+    } catch (error) {
+        console.error("Error loading album:", error);
+        document.body.classList.add("loaded"); // Avoid permanent blank screen
+    }
+}
+
+// Start fetching albums
+fetchAlbums();
