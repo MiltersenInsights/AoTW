@@ -100,6 +100,14 @@ h1 {
     pointer-events: none;
 }
 
+/* Minimal display for the album container – just the album cover */
+body.only-cover .album-container h2,
+body.only-cover #posted-by,
+body.only-cover #posted-date,
+body.only-cover .poster-comment {
+    display: none;
+}
+
 /* ============================= */
 /* 💬 ALBUM DETAILS STYLING 💬 */
 /* ============================= */
