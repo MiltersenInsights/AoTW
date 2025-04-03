@@ -1,157 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" type="image/png" href="assets/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AoTW Collection</title>
-    <style>
-        /* Album Grid */
-        .album-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
+document.addEventListener("DOMContentLoaded", async () => {
+    const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
+    const albumGrid = document.getElementById("albumGrid");
+
+    // Make sure the albumGrid exists
+    if (!albumGrid) {
+        console.error("Album grid not found!");
+        return;
+    }
+
+    // Show loading text while fetching
+    albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>Loading albums...</p>";
+
+    try {
+        const response = await fetch(sheetURL);
+        const data = await response.json();
+
+        if (data.length === 0) {
+            albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>No albums found</p>";
+            return;
         }
 
-        /* Album Item Styling */
-        .album-item {
-            position: relative;
-            border-radius: 5px;
-            background-size: cover;
-            background-position: center;
-            aspect-ratio: 1;
-            transition: transform 0.4s;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-        }
+        albumGrid.innerHTML = ""; // Clear loading text
 
-        .album-item::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 5px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-            pointer-events: none;
-        }
+        data.forEach(album => {
+            const albumItem = document.createElement("div");
+            albumItem.classList.add("album-item");
 
-        .album-item:hover {
-            transform: scale(1.05);
-        }
+            const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
+            const spotifyLink = album["Spotify Link"] || "#";
 
-        /* Transparent Album Info Box */
-        .album-info {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 15px 10px; /* Increased padding for better spacing */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Aligns all text to the left */
-            text-align: left;
-        }
+            const link = document.createElement("a");
+            link.href = spotifyLink;
+            link.target = "_blank";
+            link.style.display = "block";
 
-        /* Album Title */
-        .album-info h3 {
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #f7c93c; /* Whiskey gold */
-            margin: 2px 0;
-            text-align: left;
-            width: 100%; /* Ensures it spans the full container */
-        }
+            albumItem.style.backgroundImage = `url(${coverImage})`;
+            albumItem.innerHTML = `
+                <div class="album-info">
+                    <h3>${album.Album}</h3>
+                    <div class="album-meta">
+                        <span>Posted by: ${album["Posted by"]} </span> 
+                        <span>&nbsp;on ${album.Date}</span> 
+                    </div>
+                </div>
+            `;
 
-        /* Posted by & Date - Arranged in one line */
-        .album-meta {
-            display: flex;
-            justify-content: initial;
-            width: 100%;
-            font-size: 0.7rem;
-            color: #FAF9F6; /* Off white */
-            padding-top: 5px;
-            margin: 2px 0;
-        }
+            link.appendChild(albumItem);
+            albumGrid.appendChild(link);
+        });
 
-        /* Back Link */
-        .back-link {
-            font-size: 1.2rem;
-            color: #f7c93c;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            display: inline-block;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="background-overlay"></div> <!-- Whiskey/vinyl-inspired backdrop -->
-    
-    <h1>AoTW Collection</h1>
-    <p>Courtesy, the Album of the Week group. Established February 25th 2022</p>
-    <a href="index.html" class="back-link">Back to Album of the Week</a>
-    
-    <div class="album-grid" id="albumGrid">
-        <!-- Albums will be inserted here -->
-    </div>
-    
-    <a href="index.html" class="back-link">Back to Album of the Week</a>
-
-    <script>
-        const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
-
-        async function fetchAlbums() {
-            try {
-                const response = await fetch(sheetURL);
-                const data = await response.json();
-                const albumGrid = document.getElementById("albumGrid");
-
-                if (data.length === 0) {
-                    albumGrid.innerHTML = "<p>No albums found</p>";
-                    return;
-                }
-
-                data.forEach(album => {
-                    const albumItem = document.createElement("div");
-                    albumItem.classList.add("album-item");
-
-                    const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
-                    const spotifyLink = album["Spotify Link"] || "#"; // Default if no link
-
-                    // Create clickable album link
-                    const link = document.createElement("a");
-                    link.href = spotifyLink;
-                    link.target = "_blank"; // Open in new tab
-                    link.style.display = "block"; // Make full area clickable
-
-                    albumItem.style.backgroundImage = `url(${coverImage})`;
-                    albumItem.innerHTML = `
-                        <div class="album-info">
-                            <h3>${album.Album}</h3>
-                            <div class="album-meta">
-                                <span>Posted by: ${album["Posted by"]} </span> 
-                                <span>&nbsp;on ${album.Date}</span> 
-                            </div>
-                        </div>
-                    `;
-
-                    link.appendChild(albumItem);
-                    albumGrid.appendChild(link); // Append the clickable link, not just the div
-                });
-            } catch (error) {
-                console.error("Error fetching albums:", error);
-            }
-        }
-
-        fetchAlbums();
-    </script>
-</body>
-</html>
+        // ✅ Ensure page only appears after albums are loaded
+        document.body.classList.add("loaded");
+    } catch (error) {
+        console.error("Error fetching albums:", error);
+        albumGrid.innerHTML = "<p style='color: red; text-align: center;'>Error loading albums. Try again later.</p>";
+    }
+});
