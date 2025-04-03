@@ -251,6 +251,30 @@ h2 {
     bottom: 10px;
     right: 16px;
 }
+/* ============================= */
+/* 🔍 SEARCHBAR 🔍         */
+/* ============================= */
+
+.search-bar {
+    display: block;
+    margin: 20px auto 30px auto;
+    padding: 10px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    width: 80%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f5c34b; /* Whiskey gold */
+    text-align: center;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar::placeholder {
+    color: rgba(245, 195, 75, 0.6);
+    font-style: italic;
+}
 
 /* ============================= */
 /* 🎵 CUSTOM SCROLLBAR 🎵 */
