@@ -63,6 +63,19 @@ h1 {
 /* ============================= */
 
 .album-container {
+    background: none; /* Remove background */
+    border: none;     /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    padding: 0;       /* Remove inner spacing */
+    margin: 0 auto 40px auto; /* Optional: adjust vertical spacing */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/*
+.album-container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -79,7 +92,7 @@ h1 {
     border: 1.5px solid rgba(255, 255, 255, 0.15);
     overflow: hidden;
     background-blend-mode: multiply;
-}
+} */
 
 .album-container::before {
     content: "";
