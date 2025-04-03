@@ -44,16 +44,16 @@
         }
 
         /* Transparent Album Info Box */
-        .album-info {
             position: absolute;
             bottom: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.6);
-            padding: 15px 10px; /* Increased padding for better spacing */
+            padding: 15px 10px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Aligns all text to the left */
+            align-items: flex-start;
             text-align: left;
+            z-index: 0; /* Keep info under control */
         }
 
         /* Album Title */
@@ -75,6 +75,11 @@
             color: #FAF9F6; /* Off white */
             padding-top: 5px;
             margin: 2px 0;
+            z-index: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         /* Back Link */
