@@ -223,8 +223,10 @@
         console.error("Error loading albums:", error);
         albumGrid.innerHTML = "<p style='color: red;'>Error loading albums.</p>";
       } finally {
-        spinner.style.display = "none";
+        spinner.remove(); // Completely removes spinner element
+        document.body.classList.add("loaded"); // In case you’re using a fade-in effect
       }
+
 
       // Search functionality
       searchInput.addEventListener("input", () => {
