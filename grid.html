@@ -1,56 +1,20 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    document.body.classList.add("loaded"); // 🔥 Make content visible immediately
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AoTW Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
 
-    const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
-    const albumGrid = document.getElementById("albumGrid");
+    <div class="content">
+        <h1>AoTW Collection</h1>
+        <div id="albumGrid" class="album-grid"></div>
+        <a href="index.html" class="back-link">Back to latest pick</a>
+    </div>
 
-    if (!albumGrid) {
-        console.error("Album grid not found!");
-        return;
-    }
-
-    albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>Loading albums...</p>";
-
-    try {
-        const response = await fetch(sheetURL);
-        const data = await response.json();
-
-        if (data.length === 0) {
-            albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>No albums found</p>";
-            return;
-        }
-
-        albumGrid.innerHTML = ""; // Clear loading text
-
-        data.forEach(album => {
-            const albumItem = document.createElement("div");
-            albumItem.classList.add("album-item");
-
-            const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
-            const spotifyLink = album["Spotify Link"] || "#";
-
-            const link = document.createElement("a");
-            link.href = spotifyLink;
-            link.target = "_blank";
-            link.style.display = "block";
-
-            albumItem.style.backgroundImage = `url(${coverImage})`;
-            albumItem.innerHTML = `
-                <div class="album-info">
-                    <h3>${album.Album}</h3>
-                    <div class="album-meta">
-                        <span>Posted by: ${album["Posted by"]} </span> 
-                        <span>&nbsp;on ${album.Date}</span> 
-                    </div>
-                </div>
-            `;
-
-            link.appendChild(albumItem);
-            albumGrid.appendChild(link);
-        });
-
-    } catch (error) {
-        console.error("Error fetching albums:", error);
-        albumGrid.innerHTML = "<p style='color: red; text-align: center;'>Error loading albums. Try again later.</p>";
-    }
-});
+    <script src="script.js"></script>
+</body>
+</html>
