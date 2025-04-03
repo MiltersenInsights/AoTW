@@ -190,6 +190,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         });
 
+        // 🔁 Sorting functionality
+        const sortSelect = document.getElementById("sortSelect");
+        sortSelect.addEventListener("change", () => {
+            const sortBy = sortSelect.value;
+        
+            let sorted = [...allAlbums];
+            if (sortBy === "newest") {
+                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (sortBy === "oldest") {
+                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+            } else if (sortBy === "az") {
+                sorted.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (sortBy === "za") {
+                sorted.sort((a, b) => b.title.localeCompare(a.title));
+            }
+        
+            albumGrid.innerHTML = "";
+            sorted.forEach(item => albumGrid.appendChild(item.element));
+        });
+
+        
         document.body.classList.add("loaded");
     } catch (error) {
         console.error("Error loading albums:", error);
