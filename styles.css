@@ -341,28 +341,45 @@ h2 {
 }
 
 /* ============================= */
-/* ✉️ EMAIL SIGNUP ✉️ */
+/* ✉️ EMAIL SIGNUP ✉️           */
 /* ============================= */
 
-.email-signup {
+.email-signup-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin: 40px auto;
-  text-align: center;
+  max-width: 400px;
 }
 
-.email-signup h3 {
-  font-size: 1.2rem;
-  color: #f5c34b;
-  margin-bottom: 12px;
-  font-weight: 400;
-}
-
-/* Hide scrollbar inside iframe on some browsers */
-
-.email-signup iframe {
-  border-radius: 8px;
+.email-input {
+  padding: 10px 15px;
   border: 2px solid #f5c34b;
   background-color: #1e1e1e;
-  color-scheme: dark;
+  color: #f5c34b;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.email-input::placeholder {
+  color: #f5c34b;
+  opacity: 0.7;
+}
+
+.email-submit {
+  padding: 10px 20px;
+  background-color: #f5c34b;
+  color: #1e1e1e;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.email-submit:hover {
+  background-color: #e1b000;
 }
 
 /* ============================= */
