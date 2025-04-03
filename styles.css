@@ -198,7 +198,7 @@ h2 {
     max-width: 1200px;
 }
 
-.album-item {
+/*.album-item {
     position: relative;
     border-radius: 5px;
     background-size: cover;
@@ -210,6 +210,22 @@ h2 {
     border: 1.5px solid rgba(255,255,255,0.1);
     overflow: hidden;
     transition: transform 0.4s;
+} */
+
+.album-item {
+    position: relative;
+    border-radius: 5px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1;
+    height: 300px;
+    transition: transform 0.4s;
+    overflow: hidden; /* 💡 Ensures no children overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    background-blend-mode: multiply;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    z-index: 1; /* Keep stacking within grid */
 }
 
 .album-item::before {
