@@ -285,12 +285,24 @@ h2 {
 /* ✉️ EMAIL SIGNUP ✉️ */
 /* ============================= */
 
-.email-signup h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #f5c34b;
+.email-signup {
+  margin: 40px auto;
+  text-align: center;
 }
 
+.email-signup h3 {
+  font-size: 1.2rem;
+  color: #f5c34b;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+/* Hide scrollbar inside iframe on some browsers */
+.email-signup iframe {
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+}
 
 /* ============================= */
 /* 🎵 SPINNER STYLING 🎵 */
