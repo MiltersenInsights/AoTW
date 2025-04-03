@@ -252,7 +252,7 @@ h2 {
     right: 16px;
 }
 /* ============================= */
-/* 🔍 SEARCHBAR 🔍         */
+/* 🔍 SEARCHBAR AND SORT 🔍         */
 /* ============================= */
 
 .search-bar {
@@ -274,6 +274,18 @@ h2 {
 .search-bar::placeholder {
     color: rgba(245, 195, 75, 0.6);
     font-style: italic;
+}
+
+.sort-dropdown {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f7c93c;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
 /* ============================= */
