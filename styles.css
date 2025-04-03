@@ -189,6 +189,20 @@ h2 {
 /* 🧱 GRID PAGE STYLING 🧱 */
 /* ============================= */
 
+.album-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 0; /* Keep info under control */
+}
+
+.album-info h3,
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -196,6 +210,14 @@ h2 {
     padding: 40px;
     margin: 0 auto;
     max-width: 1200px;
+}
+
+.album-meta {
+    z-index: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 /*.album-item {
