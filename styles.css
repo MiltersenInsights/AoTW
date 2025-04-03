@@ -32,6 +32,16 @@ h1 {
     margin: 50px 0 30px;
 }
 
+.sticky-header h1 {
+  font-size: 1.6rem;     /* Smaller than original 2rem */
+  margin: 0;
+  padding: 6px 0;
+}
+
+.sticky-header {
+  padding: 10px 15px;
+}
+
 /* ============================= */
 /* 🎵 BACKGROUND OVERLAY 🎵 */
 /* ============================= */
