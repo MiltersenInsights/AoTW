@@ -105,6 +105,15 @@
       placeholder="Search albums..."
       class="search-bar"
     />
+    
+    <div style="margin: 10px auto; text-align: center;">
+      <select id="sortSelect" class="sort-dropdown">
+        <option value="newest">Sort by: Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">Album Title A–Z</option>
+        <option value="za">Album Title Z–A</option>
+      </select>
+    </div>
 
     <div class="album-grid" id="albumGrid">
         <!-- Albums will be inserted here -->
