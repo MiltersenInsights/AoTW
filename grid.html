@@ -1,221 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="assets/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AoTW Collection</title>
-    <style>
-        /* Album Grid */
-        .album-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AoTW Collection</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+    }
 
-        /* Album Item Styling */
-        .album-item {
-            position: relative;
-            border-radius: 5px;
-            background-size: cover;
-            background-position: center;
-            aspect-ratio: 1;
-            transition: transform 0.4s;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-        }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
 
-        .album-item::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 5px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-            pointer-events: none;
-        }
+    h1 {
+      font-size: 2rem;
+      color: #f5c34b;
+      margin: 0;
+    }
 
-        .album-item:hover {
-            transform: scale(1.05);
-        }
+    .search-bar {
+      margin: 10px auto 0;
+      padding: 8px 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 2px solid #f5c34b;
+      background-color: #1e1e1e;
+      color: #f5c34b;
+      outline: none;
+      width: 280px;
+    }
 
-        /* Transparent Album Info Box */
-        .album-info {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 15px 10px; /* Increased padding for better spacing */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Aligns all text to the left */
-            text-align: left;
-        }
+    .sort-dropdown {
+      background-color: #1e1e1e;
+      color: #f5c34b;
+      border: 2px solid #f5c34b;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      margin-top: 8px;
+    }
 
-        /* Album Title */
-        .album-info h3 {
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #f7c93c; /* Whiskey gold */
-            margin: 2px 0;
-            text-align: left;
-            width: 100%; /* Ensures it spans the full container */
-        }
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        /* Posted by & Date - Arranged in one line */
-        .album-meta {
-            display: flex;
-            justify-content: initial;
-            width: 100%;
-            font-size: 0.7rem;
-            color: #FAF9F6; /* Off white */
-            padding-top: 5px;
-            margin: 2px 0;
-        }
+    .album-item {
+      position: relative;
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+      aspect-ratio: 1;
+      transition: transform 0.4s;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+    }
 
-        /* Back Link */
-        .back-link {
-            font-size: 1.2rem;
-            color: #f7c93c;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            display: inline-block;
-        }
+    .album-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 5px;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .album-item:hover {
+      transform: scale(1.05);
+    }
+
+    .album-info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .album-info h3 {
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: #f7c93c;
+      margin: 2px 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .album-meta {
+      display: flex;
+      justify-content: initial;
+      width: 100%;
+      font-size: 0.7rem;
+      color: #FAF9F6;
+      padding-top: 5px;
+      margin: 2px 0;
+    }
+
+    .back-link {
+      font-size: 1.2rem;
+      color: #f7c93c;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 30px auto;
+      display: block;
+      text-align: center;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Vinyl Spinner */
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid #f5c34b;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
-<body> <body class="grid-page">
-    <div class="background-overlay"></div> <!-- Whiskey/vinyl-inspired backdrop -->
-    
-    <h1>AoTW Collection</h1>
-    <p>Courtesy, the Album of the Week group. Established February 25th 2022</p>
-    <a href="index.html" class="back-link">Back to Album of the Week</a>
-    
-    <input
-      type="text"
-      id="albumSearch"
-      placeholder="Search albums..."
-      class="search-bar"
-    />
-    
-    <div style="margin: 10px auto; text-align: center;">
-      <select id="sortSelect" class="sort-dropdown">
-        <option value="newest">Sort by: Newest First</option>
-        <option value="oldest">Oldest First</option>
-        <option value="az">Album Title A–Z</option>
-        <option value="za">Album Title Z–A</option>
-      </select>
-    </div>
+<body class="grid-page">
+  <div class="background-overlay"></div>
 
-    <div class="album-grid" id="albumGrid">
-        <!-- Albums will be inserted here -->
-    </div>
-    
-    <a href="index.html" class="back-link">Back to Album of the Week</a>
+  <div class="sticky-header">
+    <h1>AoTW Collection</h1>
+    <input type="text" id="albumSearch" placeholder="Search albums..." class="search-bar" />
+    <select id="sortSelect" class="sort-dropdown">
+      <option value="newest" selected>Sort by: Newest First</option>
+      <option value="oldest">Oldest First</option>
+      <option value="az">Album Title A–Z</option>
+      <option value="za">Album Title Z–A</option>
+    </select>
+  </div>
+
+  <div class="album-grid" id="albumGrid">
+    <div class="spinner" id="spinner"></div>
+  </div>
+
+  <a href="index.html" class="back-link">Back to Album of the Week</a>
 
   <script>
-document.addEventListener("DOMContentLoaded", async () => {
-    const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
-    const albumGrid = document.getElementById("albumGrid");
-    const searchInput = document.getElementById("albumSearch");
+    document.addEventListener("DOMContentLoaded", async () => {
+      const sheetURL = "https://opensheet.elk.sh/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/json";
+      const albumGrid = document.getElementById("albumGrid");
+      const searchInput = document.getElementById("albumSearch");
+      const sortSelect = document.getElementById("sortSelect");
+      const spinner = document.getElementById("spinner");
 
-    if (!albumGrid || !searchInput) {
-        console.error("Required elements not found!");
-        return;
-    }
+      let allAlbums = [];
 
-    albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>Loading albums...</p>";
+      const renderAlbums = (albums) => {
+        albumGrid.innerHTML = ""; // Clear grid
+        albums.forEach(album => {
+          const albumItem = document.createElement("div");
+          albumItem.classList.add("album-item");
 
-    try {
+          const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
+          const spotifyLink = album["Spotify Link"] || "#";
+
+          const link = document.createElement("a");
+          link.href = spotifyLink;
+          link.target = "_blank";
+          link.style.display = "block";
+
+          albumItem.style.backgroundImage = `url(${coverImage})`;
+          albumItem.innerHTML = `
+            <div class="album-info">
+              <h3>${album.Album}</h3>
+              <div class="album-meta">
+                <span>Posted by: ${album["Posted by"]}</span>
+                <span>&nbsp;on ${album.Date}</span>
+              </div>
+            </div>
+          `;
+
+          link.appendChild(albumItem);
+          albumGrid.appendChild(link);
+        });
+      };
+
+      try {
         const response = await fetch(sheetURL);
         const data = await response.json();
-        albumGrid.innerHTML = "";
 
-        if (data.length === 0) {
-            albumGrid.innerHTML = "<p style='color: #f7c93c; text-align: center;'>No albums found</p>";
-            return;
+        if (!data || data.length === 0) {
+          albumGrid.innerHTML = "<p style='color: #f7c93c;'>No albums found</p>";
+          return;
         }
 
-        // Create array to store albums for filtering
-        const allAlbums = [];
-
-        data.forEach(album => {
-            const albumItem = document.createElement("div");
-            albumItem.classList.add("album-item");
-
-            const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
-            const spotifyLink = album["Spotify Link"] || "#";
-
-            const link = document.createElement("a");
-            link.href = spotifyLink;
-            link.target = "_blank";
-            link.style.display = "block";
-
-            albumItem.style.backgroundImage = `url(${coverImage})`;
-            albumItem.innerHTML = `
-                <div class="album-info">
-                    <h3>${album.Album}</h3>
-                    <div class="album-meta">
-                        <span>Posted by: ${album["Posted by"]}</span>
-                        <span>&nbsp;on ${album.Date}</span>
-                    </div>
-                </div>
-            `;
-
-            link.appendChild(albumItem);
-            albumGrid.appendChild(link);
-
-            allAlbums.push({
-                element: link,
-                title: album.Album.toLowerCase(),
-                postedBy: (album["Posted by"] || "").toLowerCase(),
-                date: (album.Date || "").toLowerCase(),
-            });
-        });
-
-        // ✅ Search functionality
-        searchInput.addEventListener("input", () => {
-            const query = searchInput.value.toLowerCase();
-            allAlbums.forEach(({ element, title, postedBy, date }) => {
-                const matches = title.includes(query) || postedBy.includes(query) || date.includes(query);
-                element.style.display = matches ? "block" : "none";
-            });
-        });
-        // 🔁 Sorting functionality
-        const sortSelect = document.getElementById("sortSelect");
-        sortSelect.addEventListener("change", () => {
-            const sortBy = sortSelect.value;
-        
-            let sorted = [...allAlbums];
-            if (sortBy === "newest") {
-                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else if (sortBy === "oldest") {
-                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-            } else if (sortBy === "az") {
-                sorted.sort((a, b) => a.title.localeCompare(b.title));
-            } else if (sortBy === "za") {
-                sorted.sort((a, b) => b.title.localeCompare(a.title));
-            }
-        
-            albumGrid.innerHTML = "";
-            sorted.forEach(item => albumGrid.appendChild(item.element));
-        });
-
-        document.body.classList.add("loaded");
-    } catch (error) {
+        // Sort default by newest
+        allAlbums = data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        renderAlbums(allAlbums);
+      } catch (error) {
         console.error("Error loading albums:", error);
-        albumGrid.innerHTML = "<p style='color: red; text-align: center;'>Error loading albums. Try again later.</p>";
-    }
-});
-</script>
+        albumGrid.innerHTML = "<p style='color: red;'>Error loading albums.</p>";
+      } finally {
+        spinner.style.display = "none";
+      }
 
+      // Search functionality
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const filtered = allAlbums.filter(album =>
+          album.Album.toLowerCase().includes(query) ||
+          (album["Posted by"] || "").toLowerCase().includes(query) ||
+          (album.Date || "").toLowerCase().includes(query)
+        );
+        renderAlbums(filtered);
+      });
+
+      // Sorting functionality
+      sortSelect.addEventListener("change", () => {
+        const value = sortSelect.value;
+        let sorted = [...allAlbums];
+
+        switch (value) {
+          case "oldest":
+            sorted.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+            break;
+          case "az":
+            sorted.sort((a, b) => a.Album.localeCompare(b.Album));
+            break;
+          case "za":
+            sorted.sort((a, b) => b.Album.localeCompare(a.Album));
+            break;
+          default:
+            sorted.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        }
+
+        renderAlbums(sorted);
+      });
+
+      // Keyboard shortcut: Press `/` to focus search
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "/") {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
