@@ -4,25 +4,19 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #212121; /* Dark background for sophistication */
-    color: #fff; /* White text for contrast */
+    background-color: #212121;
+    color: #fff;
     text-align: center;
     margin: 0;
     padding: 0;
-}
-
-/* Initially hide content */
-body {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* When the page is loaded, make everything visible */
 body.loaded {
     opacity: 1;
 }
 
-/* Hide the album grid if it's accidentally included in index.html */
 body:not(.grid-page) .album-grid {
     display: none !important;
 }
@@ -34,9 +28,8 @@ body:not(.grid-page) .album-grid {
 h1 {
     font-size: 3rem;
     font-weight: 600;
-    color: #f5c34b; /* Whiskey gold */
-    margin-top: 50px;
-    margin-bottom: 30px;
+    color: #f5c34b;
+    margin: 50px 0 30px;
 }
 
 /* ============================= */
@@ -51,7 +44,7 @@ h1 {
     height: 100%;
     background: url('https://milterseninsights.github.io/AoTW/assets/whiskeyandvinyl.png') center/cover no-repeat, #1c1c1c;
     filter: brightness(0.6);
-    z-index: -2; /* Ensure it's behind content */
+    z-index: -2;
 }
 
 /* ============================= */
@@ -60,7 +53,6 @@ h1 {
 
 .content {
     position: relative;
-    text-align: center;
     max-width: 800px;
     margin: auto;
     padding: 40px 20px;
@@ -78,19 +70,17 @@ h1 {
     justify-content: center;
     max-width: 600px;
     margin: 20px auto;
-    padding: 20px;    
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-position: center;
     border-radius: 12px;
-    transition: transform 0.4s;
-    overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    background-blend-mode: multiply;
     border: 1.5px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    background-blend-mode: multiply;
 }
 
-/* Subtle 3D Inner Shadow Effect */
 .album-container::before {
     content: "";
     position: absolute;
@@ -100,7 +90,6 @@ h1 {
     pointer-events: none;
 }
 
-/* Minimal display for the album container – just the album cover */
 body.only-cover .album-container h2,
 body.only-cover #posted-by,
 body.only-cover #posted-date,
@@ -108,52 +97,58 @@ body.only-cover .poster-comment {
     display: none;
 }
 
+body.only-cover .album-cover {
+    max-width: 500px;
+    margin-top: 40px;
+}
+
 /* ============================= */
 /* 💬 ALBUM DETAILS STYLING 💬 */
 /* ============================= */
 
+.poster-comment, .posted-by, h2 {
+    color: #f5c34b;
+}
+
 .poster-comment {
     font-size: 1.2rem;
     font-style: italic;
-    color: #f5c34b;
-    margin-bottom: 15px;
     opacity: 0.85;
+    margin-bottom: 15px;
 }
 
 .posted-by {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #f5c34b;
     margin-top: 10px;
 }
 
 h2 {
     font-size: 2rem;
     font-weight: 600;
-    color: #f5c34b;
     margin-bottom: 20px;
 }
+
+/* ============================= */
+/* 📀 ALBUM COVER 📀 */
+/* ============================= */
 
 .album-cover {
     width: 100%;
     max-width: 400px;
-    aspect-ratio: 1; /* Make it square like a vinyl cover */
+    aspect-ratio: 1;
     margin: 25px 0;
     border-radius: 6px;
     object-fit: cover;
-    box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.5),  /* Inner vignette for depth */
-        0 6px 16px rgba(0, 0, 0, 0.6);       /* Outer shadow */
-    border: 2px solid rgba(255, 255, 255, 0.07); /* Soft edge like sleeve */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.07);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    background-color: #1c1c1c; /* fallback if image doesn't fill */
+    background-color: #1c1c1c;
 }
 
 .album-cover:hover {
     transform: scale(1.03);
-    box-shadow:
-        inset 0 0 30px rgba(0, 0, 0, 0.6),
-        0 8px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 8px 20px rgba(0,0,0,0.7);
 }
 
 /* ============================= */
@@ -169,12 +164,12 @@ h2 {
 }
 
 .back-link:hover {
-    text-decoration: underline;
     color: #e1b000;
+    text-decoration: underline;
 }
 
 /* ============================= */
-/* 🎨 GRID PAGE STYLING 🎨 */
+/* 🧱 GRID PAGE STYLING 🧱 */
 /* ============================= */
 
 .album-grid {
@@ -186,100 +181,74 @@ h2 {
     max-width: 1200px;
 }
 
-/* ============================= */
-/* 🎵 VINYL RECORD COVER LOOK 🎵 */
-/* ============================= */
-
 .album-item {
     position: relative;
     border-radius: 5px;
-    text-align: center;
     background-size: cover;
     background-position: center;
     aspect-ratio: 1;
     height: 300px;
-    transition: transform 0.4s;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     background-blend-mode: multiply;
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+    transition: transform 0.4s;
 }
 
-/* Inner Shadow Effect for Vinyl Aesthetic */
 .album-item::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: 5px;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
     pointer-events: none;
 }
 
-/* Hover effect */
 .album-item:hover {
     transform: scale(1.05);
 }
 
-/* Album Item Details */
+.album-item h3, .album-item p, .album-item .date {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    z-index: 2;
+    position: absolute;
+}
+
 .album-item h3 {
     font-size: 1.5rem;
-    font-weight: 600;
     color: #f5c34b;
-    position: absolute;
     bottom: 30px;
     left: 16px;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .album-item p {
-    position: absolute;
-    bottom: 10px;
-    left: 16px;
     font-size: 1rem;
     color: white;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    bottom: 10px;
+    left: 16px;
 }
 
 .album-item .date {
-    position: absolute;
-    right: 16px;
-    bottom: 10px;
     font-size: 0.9rem;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Make the whole grid item a clickable link */
-.album-item a {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    text-decoration: none;
-    z-index: 2;
+    bottom: 10px;
+    right: 16px;
 }
 
 /* ============================= */
 /* 🎵 CUSTOM SCROLLBAR 🎵 */
 /* ============================= */
 
-/* For Webkit-based browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
     width: 10px;
 }
-
 ::-webkit-scrollbar-track {
     background: #1C1C1C;
 }
-
 ::-webkit-scrollbar-thumb {
     background: #f7c93c;
     border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: #d4a637;
 }
@@ -292,12 +261,10 @@ h2 {
     h1 {
         font-size: 2.5rem;
     }
-
     .album-container {
         padding: 20px;
         max-width: 90%;
     }
-
     .album-item {
         height: 250px;
     }
