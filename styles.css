@@ -42,6 +42,27 @@ h1 {
   padding: 10px 15px;
 }
 
+.sticky-footer {
+  position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  margin-top: -40px; /* Pulls it up slightly for an overlap effect */
+  text-align: center;
+  z-index: 2;
+  border-top: 1px solid rgba(245, 195, 75, 0.2); /* thin whiskey gold line */
+}
+
+.sticky-footer .back-link {
+  color: #f5c34b;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sticky-footer .back-link:hover {
+  text-decoration: underline;
+}
+
 /* ============================= */
 /* 🎵 BACKGROUND OVERLAY 🎵 */
 /* ============================= */
