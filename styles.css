@@ -11,6 +11,17 @@ body {
     padding: 0;
 }
 
+/* Initially hide content */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+/* When the page is loaded, make everything visible */
+body.loaded {
+    opacity: 1;
+}
+
 /* ============================= */
 /* 🔥 HEADER STYLING 🔥 */
 /* ============================= */
