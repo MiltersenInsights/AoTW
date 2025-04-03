@@ -298,10 +298,12 @@ h2 {
 }
 
 /* Hide scrollbar inside iframe on some browsers */
+
 .email-signup iframe {
-  border: none;
-  background-color: transparent;
-  overflow: hidden;
+  border-radius: 8px;
+  border: 2px solid #f5c34b;
+  background-color: #1e1e1e;
+  color-scheme: dark;
 }
 
 /* ============================= */
