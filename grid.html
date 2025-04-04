@@ -142,28 +142,28 @@
 <body class="grid-page">
   <div class="background-overlay"></div>
   
-  <div class="sticky-header">
-    <h1>AoTW</h1>
-    <div class="control-block">
-      <input type="text" id="albumSearch" placeholder="Search albums..." class="search-bar" />
-      <div class="dropdown-row">
-        <select id="posterFilter" class="sort-dropdown">
-          <option value="">Filter by poster</option>
-        </select>
-        <select id="sortSelect" class="sort-dropdown">
-          <option value="newest" selected>Sort by: Newest First</option>
-          <option value="oldest">Oldest First</option>
-          <option value="az">Album Title A–Z</option>
-          <option value="za">Album Title Z–A</option>
-        </select>
+    <div class="sticky-header">
+      <h1>AoTW</h1>
+      <div class="control-block">
+        <input type="text" id="albumSearch" placeholder="Search albums..." class="search-bar" />
+        <div class="dropdown-row">
+          <select id="posterFilter" class="sort-dropdown">
+            <option value="">Filter by poster</option>
+          </select>
+          <select id="sortSelect" class="sort-dropdown">
+            <option value="newest" selected>Sort by: Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="az">Album Title A–Z</option>
+            <option value="za">Album Title Z–A</option>
+          </select>
+        </div>
         <label class="info-toggle">
-        <input type="checkbox" id="toggleInfo" checked />
-        Show Album Info
-      </label>
+          <input type="checkbox" id="toggleInfo" checked />
+          Show Album Info
+        </label>
       </div>
     </div>
-  </div>
-
+      
   <div class="album-grid" id="albumGrid">
     <div class="spinner" id="spinner"></div>
   </div>
