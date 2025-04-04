@@ -47,7 +47,7 @@ h1 {
   bottom: 0;
   width: 100%;
   background-color: rgba(18,18,18,0.95);
-  padding: 10px 0;
+  padding: 6px 0;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.1);
   z-index: 5;
@@ -68,7 +68,7 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40px; /* Slim footer */
+  height: 30px; /* Slim footer */
   background: rgba(0, 0, 0, 0.5); /* Transparent dark vinyl feel */
   display: flex;
   align-items: center;
