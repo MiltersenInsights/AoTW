@@ -17,6 +17,7 @@ async function fetchAlbums() {
       const searchInput = document.getElementById("albumSearch");
       const sortSelect = document.getElementById("sortSelect");
       const posterFilter = document.getElementById("posterFilter");
+      const infoToggle = document.getElementById("toggleInfo");
       const spinner = document.getElementById("spinner");
 
       let allAlbums = [...data];
@@ -39,6 +40,9 @@ async function fetchAlbums() {
         albums.forEach(album => {
           const albumItem = document.createElement("div");
           albumItem.classList.add("album-item");
+          if (!infoToggle.checked) {
+            albumItem.classList.add("hide-info");
+          }
 
           const coverImage = album["Cover Image"] || "https://via.placeholder.com/200";
           const spotifyLink = album["Spotify Link"] || "#";
@@ -105,6 +109,8 @@ async function fetchAlbums() {
       searchInput.addEventListener("input", filterAndRender);
       sortSelect.addEventListener("change", filterAndRender);
       posterFilter.addEventListener("change", filterAndRender);
+      infoToggle.addEventListener("change", filterAndRender);
+
       window.addEventListener("keydown", e => {
         if (e.key === "/") {
           e.preventDefault();
