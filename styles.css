@@ -43,20 +43,20 @@ h1 {
 }
 
 .sticky-footer {
-  position: relative;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  margin-top: -40px; /* Pulls it up slightly for an overlap effect */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(18,18,18,0.95);
+  padding: 10px 0;
   text-align: center;
-  z-index: 2;
-  border-top: 1px solid rgba(245, 195, 75, 0.2); /* thin whiskey gold line */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 5;
 }
 
 .sticky-footer .back-link {
+  font-size: 1rem;
   color: #f5c34b;
-  font-size: 1.1rem;
   text-decoration: none;
-  font-weight: 600;
 }
 
 .sticky-footer .back-link:hover {
