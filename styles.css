@@ -276,7 +276,7 @@ h2 {
     right: 16px;
 }
 /* ============================= */
-/* 🔍 SEARCHBAR AND SORT 🔍         */
+/* 🔍 SEARCHBAR, SORT AND TOGGLE 🔍 */
 /* ============================= */
 
 .search-bar {
@@ -343,6 +343,24 @@ h2 {
 
 .sort-dropdown {
   width: 160px;
+}
+
+.info-toggle {
+  font-size: 0.85rem;
+  color: #f5c34b;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-toggle input[type="checkbox"] {
+  accent-color: #f5c34b;
+  transform: scale(1.1);
+}
+
+.album-item.hide-info .album-info {
+  display: none;
 }
 
 /* ============================= */
