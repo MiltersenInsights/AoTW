@@ -33,13 +33,13 @@ h1 {
 }
 
 .sticky-header h1 {
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   margin: 0 0 4px;
   padding: 0;
 }
 
 .sticky-header {
-  padding: 6px 8px;
+  padding: 6px 12px;
 }
 
 .sticky-footer {
