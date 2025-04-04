@@ -33,13 +33,13 @@ h1 {
 }
 
 .sticky-header h1 {
-  font-size: 1.6rem;     /* Smaller than original 2rem */
-  margin: 0;
-  padding: 6px 0;
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+  padding: 0;
 }
 
 .sticky-header {
-  padding: 10px 15px;
+  padding: 6px 12px;
 }
 
 .sticky-footer {
@@ -316,20 +316,19 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 6px;
 }
 
 .dropdown-row {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
 }
 
 .search-bar,
 .sort-dropdown {
-  padding: 6px 10px;
-  font-size: 0.95rem;
+  padding: 5px 10px;
+  font-size: 0.9rem;
   border-radius: 6px;
   border: 2px solid #f5c34b;
   background-color: #1e1e1e;
@@ -338,25 +337,25 @@ h2 {
 }
 
 .search-bar {
-  width: 240px;
+  width: 150px;
 }
 
 .sort-dropdown {
-  width: 160px;
+  width: 150px;
 }
 
 .info-toggle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #f5c34b;
-  margin-top: 6px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  margin-top: -2px;
 }
 
 .info-toggle input[type="checkbox"] {
   accent-color: #f5c34b;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .album-item.hide-info .album-info {
