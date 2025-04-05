@@ -123,10 +123,9 @@ body.loaded {
 .album-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0; /* no gap between columns */
+  gap: 16; /* Remove default gap */
   overflow-x: auto;
   padding: 20px;
-  gap: 16; /* Remove default gap */
   max-width: 1200px;
   margin: auto;
 }
