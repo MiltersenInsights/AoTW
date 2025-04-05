@@ -46,6 +46,7 @@ h1 {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 90px; /* ✅ fixed height */
   background-color: rgba(18,18,18,0.95);
   padding: 6px 0;
   text-align: center;
