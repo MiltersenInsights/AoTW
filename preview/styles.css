@@ -121,11 +121,11 @@ body.loaded {
 
 /* Album Grid */
 .album-grid {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  gap: 0; /* no gap between columns */
   overflow-x: auto;
-  padding: 40px 20px;
+  padding: 20px;
   gap: 0; /* Remove default gap */
   max-width: 1200px;
   margin: auto;
@@ -158,6 +158,10 @@ body.loaded {
 
 .album-item:first-child {
   margin-left: 0; /* Don't offset the first one */
+}
+
+.album-item:nth-child(5n + 1) {
+  margin-left: 0; /* ✅ No overlap on first item of each row */
 }
 
 .album-item:hover {
