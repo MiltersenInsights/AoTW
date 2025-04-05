@@ -1,315 +1,36 @@
-/* ============================= */
-/* 🌙 GENERAL STYLES 🌙 */
-/* ============================= */
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #212121;
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+  font-family: 'Arial', sans-serif;
+  background-color: #212121;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 body.loaded {
-    opacity: 1;
+  opacity: 1;
 }
 
-body:not(.grid-page) .album-grid {
-    display: none !important;
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-
-/* ============================= */
-/* 🔥 HEADER STYLING 🔥 */
-/* ============================= */
-
-    h1 {
-      font-size: 1.05rem;
-      color: #f5c34b;
-      margin: 0 0 6px;
-    }
 
 .sticky-header h1 {
   font-size: 1.4rem;
   margin: 0 0 4px;
   padding: 0;
-}
-
-.sticky-header {
-  padding: 6px 12px;
-}
-
-.sticky-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 90px; /* ✅ fixed height */
-  background-color: rgba(18,18,18,0.95);
-  padding: 6px 0;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  z-index: 5;
-}
-
-.sticky-footer .back-link {
-  font-size: 1rem;
   color: #f5c34b;
-  text-decoration: none;
-}
-
-.sticky-footer .back-link:hover {
-  text-decoration: underline;
-}
-
-.floating-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30px; /* Slim footer */
-  background: rgba(0, 0, 0, 0.5); /* Transparent dark vinyl feel */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-}
-
-.back-link-footer {
-  color: #f5c34b;
-  font-size: 0.9rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.back-link-footer:hover {
-  text-decoration: underline;
-  color: #ffd666;
-}
-
-/* ============================= */
-/* 🎵 BACKGROUND OVERLAY 🎵 */
-/* ============================= */
-
-.background-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://milterseninsights.github.io/AoTW/assets/whiskeyandvinyl.png') center/cover no-repeat, #1c1c1c;
-    filter: brightness(0.6);
-    z-index: -2;
-}
-
-/* ============================= */
-/* 📦 CONTENT CONTAINER 📦 */
-/* ============================= */
-
-.content {
-    position: relative;
-    max-width: 800px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-/* ============================= */
-/* 🎧 ALBUM CONTAINER 🎧 */
-/* ============================= */
-
-.album-container {
-    background: none; /* Remove background */
-    border: none;     /* Remove border */
-    box-shadow: none; /* Remove shadow */
-    padding: 0;       /* Remove inner spacing */
-    margin: 0 auto 40px auto; /* Optional: adjust vertical spacing */
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.album-container::before {
-    display: none;
-}
-
-body.only-cover .album-container h2,
-body.only-cover #posted-by,
-body.only-cover #posted-date,
-body.only-cover .poster-comment {
-    display: none;
-}
-
-body.only-cover .album-cover {
-    max-width: 800px;
-    margin-top: 40px;
-}
-
-/* ============================= */
-/* 💬 ALBUM DETAILS STYLING 💬 */
-/* ============================= */
-
-.poster-comment, .posted-by, h2 {
-    color: #f5c34b;
-}
-
-.poster-comment {
-    font-size: 1.2rem;
-    font-style: italic;
-    opacity: 0.85;
-    margin-bottom: 15px;
-}
-
-.posted-by {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-top: 10px;
-}
-
-h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-/* ============================= */
-/* 📀 ALBUM COVER 📀 */
-/* ============================= */
-
-.album-cover {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 1;
-    margin: 25px 0;
-    border-radius: 6px;
-    object-fit: cover;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.6);
-    border: 2px solid rgba(255,255,255,0.07);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    background-color: #1c1c1c;
-}
-
-.album-cover:hover {
-    transform: scale(1.03);
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 8px 20px rgba(0,0,0,0.7);
-}
-
-/* ============================= */
-/* 🔗 BACK LINK STYLING 🔗 */
-/* ============================= */
-
-.back-link {
-    font-size: 1.5rem;
-    color: #f5c34b;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-.back-link:hover {
-    color: #e1b000;
-    text-decoration: underline;
-}
-
-/* ============================= */
-/* 🧱 GRID PAGE STYLING 🧱 */
-/* ============================= */
-
-.album-item {
-    position: relative;
-    border-radius: 5px;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    aspect-ratio: 1;
-    height: 300px;
-    transition: transform 0.4s;
-    overflow: hidden; /* 💡 Ensures no children overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    background-blend-mode: multiply;
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    z-index: 1; /* Keep stacking within grid */
-}
-
-.album-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 5px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-    pointer-events: none;
-}
-
-.album-item:hover {
-    transform: scale(1.05);
-}
-
-.album-item h3, .album-item p, .album-item .date {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    z-index: 2;
-    position: absolute;
-}
-
-.album-item h3 {
-    font-size: 1.5rem;
-    color: #f5c34b;
-    bottom: 30px;
-    left: 16px;
-}
-
-.album-item p {
-    font-size: 1rem;
-    color: white;
-    bottom: 10px;
-    left: 16px;
-}
-
-.album-item .date {
-    font-size: 0.9rem;
-    color: white;
-    bottom: 10px;
-    right: 16px;
-}
-/* ============================= */
-/* 🔍 SEARCHBAR, SORT AND TOGGLE 🔍 */
-/* ============================= */
-
-.search-bar {
-    display: block;
-    margin: 20px auto 30px auto;
-    padding: 10px 16px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: none;
-    width: 80%;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #f5c34b; /* Whiskey gold */
-    text-align: center;
-    backdrop-filter: blur(3px);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-.search-bar::placeholder {
-    color: rgba(245, 195, 75, 0.6);
-    font-style: italic;
-}
-
-.sort-dropdown {
-    padding: 8px 12px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #f7c93c;
-    backdrop-filter: blur(3px);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
 }
 
 .control-block {
@@ -317,6 +38,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  margin-top: 4px;
 }
 
 .dropdown-row {
@@ -337,7 +59,7 @@ h2 {
 }
 
 .search-bar {
-  width: 150px;
+  width: 220px;
 }
 
 .sort-dropdown {
@@ -354,23 +76,18 @@ h2 {
 }
 
 .info-toggle input[type="checkbox"] {
-  accent-color: #f5c34b;
-  transform: scale(1.05);
-}
-
-.info-toggle input[type="checkbox"] {
   appearance: none;
   width: 18px;
   height: 18px;
   border: 2px solid #f5c34b;
   border-radius: 4px;
-  background-color: #f5c34b; /* When unchecked */
+  background-color: #f5c34b;
   cursor: pointer;
   position: relative;
 }
 
 .info-toggle input[type="checkbox"]:checked {
-  background-color: #1e1e1e; /* Dark when checked */
+  background-color: #1e1e1e;
 }
 
 .info-toggle input[type="checkbox"]::after {
@@ -390,110 +107,119 @@ h2 {
   display: block;
 }
 
+/* Album Grid */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.album-item {
+  position: relative;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1;
+  transition: transform 0.4s;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.album-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.album-item:hover {
+  transform: scale(1.05);
+}
+
+.album-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.album-info h3 {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #f7c34b;
+  margin: 2px 0;
+}
+
+.album-meta {
+  font-size: 0.7rem;
+  color: #FAF9F6;
+}
+
 .album-item.hide-info .album-info {
   display: none;
 }
 
-/* ============================= */
-/* ✉️ EMAIL SIGNUP ✉️           */
-/* ============================= */
-
-.email-signup-form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 40px auto;
-  max-width: 400px;
-}
-
-.email-input {
-  padding: 10px 15px;
-  border: 2px solid #f5c34b;
-  background-color: #1e1e1e;
-  color: #f5c34b;
-  border-radius: 6px;
-  font-size: 1rem;
-  width: 100%;
-}
-
-.email-input::placeholder {
-  color: #f5c34b;
-  opacity: 0.7;
-}
-
-.email-submit {
-  padding: 10px 20px;
-  background-color: #f5c34b;
-  color: #1e1e1e;
-  border: none;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.email-submit:hover {
-  background-color: #e1b000;
-}
-
-/* ============================= */
-/* 🎵 SPINNER STYLING 🎵 */
-/* ============================= */
-
+/* Spinner */
 .spinner {
-  border: 6px solid rgba(255, 255, 255, 0.1);
-  border-top: 6px solid #f5c34b;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #f5c34b;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 0.8s linear infinite;
-  margin: 60px auto;
-  box-shadow: 0 0 15px rgba(245, 195, 75, 0.4);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
 }
 
-.spinner::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: #000;
-  border-radius: 50%;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* ============================= */
-/* 🎵 CUSTOM SCROLLBAR 🎵 */
-/* ============================= */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: #1C1C1C;
-}
-::-webkit-scrollbar-thumb {
-    background: #f7c93c;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #d4a637;
+/* Footer */
+.sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(18,18,18,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ============================= */
-/* 📱 RESPONSIVE STYLES 📱 */
-/* ============================= */
+.sticky-footer .back-link {
+  font-size: 1rem;
+  color: #f5c34b;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    .album-container {
-        padding: 20px;
-        max-width: 90%;
-    }
-    .album-item {
-        height: 250px;
-    }
+.sticky-footer .back-link:hover {
+  text-decoration: underline;
+  color: #ffd666;
+}
+
+/* Background Overlay */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://milterseninsights.github.io/AoTW/assets/whiskeyandvinyl.png') center/cover no-repeat, #1c1c1c;
+  filter: brightness(0.6);
+  z-index: -2;
 }
