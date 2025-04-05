@@ -25,12 +25,11 @@ body:not(.grid-page) .album-grid {
 /* 🔥 HEADER STYLING 🔥 */
 /* ============================= */
 
-h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    color: #f5c34b;
-    margin: 50px 0 30px;
-}
+    h1 {
+      font-size: 1.05rem;
+      color: #f5c34b;
+      margin: 0 0 6px;
+    }
 
 .sticky-header h1 {
   font-size: 1.4rem;
