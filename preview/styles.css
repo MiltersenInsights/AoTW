@@ -126,7 +126,7 @@ body.loaded {
   gap: 0; /* no gap between columns */
   overflow-x: auto;
   padding: 20px;
-  gap: 0; /* Remove default gap */
+  gap: 10; /* Remove default gap */
   max-width: 1200px;
   margin: auto;
 }
