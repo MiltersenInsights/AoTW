@@ -144,6 +144,7 @@ body.loaded {
   gap: 10px 0; /* ✅ vertical spacing only */
   overflow-x: auto;
   padding: 20px 40px 20px 20px; /* top right bottom left */
+  padding-bottom: 45px; /* enough room for footer */
   max-width: 1200px;
   margin: auto;
 }
