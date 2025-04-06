@@ -40,6 +40,24 @@ body.loaded {
   color: #f5c34b;
 }
 
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1C1C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f7c93c;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a637;
+}
+
 /***************************************************/
 /* Part 2: Controls — Search, Filter, Sort, Toggle */
 /***************************************************/
@@ -142,10 +160,10 @@ body.loaded {
 .album-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px 0; /* ✅ vertical spacing only */
+  gap: 24px 0; /* vertical spacing only */
   overflow-x: auto;
-  padding: 20px 40px 20px 20px; /* top right bottom left */
-  padding-bottom: 35px; /* enough room for footer */
+  padding: 20px 40px 45px 20px; /* top right bottom left */
+  padding-bottom: 60px; /* enough room for footer */
   max-width: 1200px;
   margin: auto;
 }
@@ -158,11 +176,11 @@ body.loaded {
   }
 
   .album-item {
-    transform: translateX(-30px); /* ✅ overlap to the left */
+    transform: translateX(-30px); /* overlap to the left */
   }
 
   .album-item:nth-child(2n + 1) {
-    transform: translateX(0); /* ✅ reset for left-column albums */
+    transform: translateX(0); /* reset for left-column albums */
   }
 }
 
@@ -182,9 +200,8 @@ body.loaded {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   min-width: 220px;
-  margin-left: -50px; /* ✅ Create horizontal overlap */
+  margin-left: -50px; /* Create horizontal overlap */
   transition: transform 0.5s ease, z-index 0.2s;
-  transform: translateY(10px); /* Push slightly down (looks like tilt) */
   z-index: 1;
 }
 
@@ -202,7 +219,7 @@ body.loaded {
 }
 
 .album-item:nth-child(5n + 1) {
-  margin-left: 0; /* ✅ No overlap on first item of each row */
+  margin-left: 0; /* No overlap on first item of each row */
 }
 
 .album-item:hover {
@@ -265,31 +282,34 @@ body.loaded {
 
 /* Footer */
 .sticky-footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 30px;
+  height: 44px; /* ✅ slightly taller */
   background-color: rgba(18,18,18,0.95);
-  padding: 12px;
+  padding: 0; /* keep this at 0 */
   display: flex;
-  align-items: center;
+  align-items: center;  /* ✅ vertical centering */
   justify-content: center;
   z-index: 100;
   border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
 }
 
 .sticky-footer .back-link {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #f5c34b;
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
+  line-height: 1;
 }
 
 .sticky-footer .back-link:hover {
   text-decoration: underline;
   color: #ffd666;
 }
+
 
 /* Background Overlay */
 .background-overlay {
@@ -306,8 +326,6 @@ body.loaded {
 /*******************************************/
 /* Part 5: Index Page Styling              */
 /*******************************************/
-
-/* ========== INDEX PAGE STYLES ========== */
 
 .content {
   position: relative;
@@ -386,4 +404,3 @@ h2#album-title {
   color: #e1b000;
   text-decoration: underline;
 }
-
