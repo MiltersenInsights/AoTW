@@ -123,9 +123,9 @@ body.loaded {
 .album-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px 0; /* ✅ vertical spacing only */
+  gap: 10px 0; /* ✅ vertical spacing only */
   overflow-x: auto;
-  padding: 10px;
+  padding: 16px;
   max-width: 1200px;
   margin: auto;
 }
