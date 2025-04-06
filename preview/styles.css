@@ -151,14 +151,16 @@ body.loaded {
 
 @media (max-width: 768px) {
   .album-grid {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 per row */
-    gap: 16px 0; /* tighter rows */
-    padding: 16px;
+    grid-template-columns: repeat(2, 1fr); /* 2 albums per row */
+    gap: 24px 0; /* vertical spacing only */
+    padding: 20px;
+    overflow-x: hidden;
   }
 
   .album-item {
-    margin-left: -20px; /* maintain slight overlap */
-    height: 180px; /* optional: shorter covers */
+    margin-left: -30px; /* horizontal overlap */
+    width: calc(100% + 30px); /* expands into the left side */
+    max-width: clamp(160px, 45vw, 200px); /* controls max width on different screen sizes */
   }
 
   .album-item:nth-child(2n + 1) {
