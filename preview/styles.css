@@ -183,7 +183,7 @@ body.loaded {
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   min-width: 220px;
   margin-left: -50px; /* ✅ Create horizontal overlap */
-  transition: transform 0.3s ease, z-index 0.2s;
+  transition: transform 0.5s ease, z-index 0.2s;
   transform: translateY(10px); /* Push slightly down (looks like tilt) */
   z-index: 1;
 }
