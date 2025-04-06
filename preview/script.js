@@ -25,6 +25,20 @@ async function fetchAlbums() {
       // Sort initially by newest
       allAlbums.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
+      // Toggle handling
+      const infoToggleButton = document.getElementById("toggleInfo");
+
+      infoToggleButton.addEventListener("click", () => {
+      infoToggleButton.classList.toggle("active");
+    
+      const showInfo = infoToggleButton.classList.contains("active");
+      const albumItems = document.querySelectorAll(".album-item");
+    
+      albumItems.forEach(item => {
+        item.classList.toggle("hide-info", !showInfo);
+        });
+      });
+
       // Populate filter dropdown
       const uniquePosters = [...new Set(allAlbums.map(a => a["Posted by"]).filter(Boolean))];
       uniquePosters.sort();
