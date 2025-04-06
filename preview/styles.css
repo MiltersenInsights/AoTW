@@ -89,6 +89,22 @@ body.loaded {
   margin-top: -2px;
 }
 
+.info-toggle-button {
+  background-color: transparent;
+  border: 2px solid #f5c34b;
+  color: #f5c34b;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.info-toggle-button.active {
+  background-color: #f5c34b;
+  color: #1e1e1e;
+}
+
 .info-toggle input[type="checkbox"] {
   appearance: none;
   width: 18px;
