@@ -272,3 +272,88 @@ body.loaded {
   filter: brightness(0.6);
   z-index: -2;
 }
+
+/*******************************************/
+/* Part 5: Index Page Styling              */
+/*******************************************/
+
+/* ========== INDEX PAGE STYLES ========== */
+
+.content {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #f5c34b;
+  margin: 30px 0 20px;
+}
+
+h2#album-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #f5c34b;
+}
+
+.date-text {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: -10px;
+}
+
+.album-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.album-cover {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background-color: #1c1c1c;
+  transition: transform 0.3s ease;
+}
+
+.album-cover:hover {
+  transform: scale(1.03);
+}
+
+.poster-comment {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #f5c34b;
+  margin: 20px 0 10px;
+  opacity: 0.85;
+}
+
+.posted-by {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.back-link {
+  font-size: 1.4rem;
+  color: #f5c34b;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #e1b000;
+  text-decoration: underline;
+}
+
