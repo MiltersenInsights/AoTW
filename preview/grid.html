@@ -6,42 +6,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AoTW Collection</title>
-
-<style>
-</style>
-  
 </head>
 
 <body class="grid-page">
   <div class="background-overlay"></div>
-  
-    <div class="sticky-header">
-      <h1>AoTW Collection</h1>
-      <div class="control-block">
-        <input type="text" id="albumSearch" placeholder="Search albums..." class="search-bar" />
-        <div class="dropdown-row">
-          <select id="posterFilter" class="sort-dropdown">
-            <option value="">Filter by poster</option>
-          </select>
-          <select id="sortSelect" class="sort-dropdown">
-            <option value="newest" selected>Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="az">Title A–Z</option>
-            <option value="za">Title Z–A</option>
-          </select>
-        </div>
-        <button id="toggleInfo" class="info-toggle-button">Info</button>
+
+  <div class="sticky-header">
+    <h1>AoTW Collection</h1>
+    <div class="control-block">
+      <input type="text" id="albumSearch" placeholder="Search albums..." class="search-bar" />
+      <div class="dropdown-row">
+        <select id="posterFilter" class="sort-dropdown">
+          <option value="">Filter by poster</option>
+        </select>
+        <select id="sortSelect" class="sort-dropdown">
+          <option value="newest" selected>Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">Title A–Z</option>
+          <option value="za">Title Z–A</option>
+        </select>
       </div>
+      <button id="toggleInfo" class="info-toggle-button">Info</button>
     </div>
-      
-  <div class="album-grid" id="albumGrid">
-    <div class="spinner" id="spinner"></div>
   </div>
-  
-  <footer class="sticky-footer">
+
+  <!-- ✅ Wrap main content in Flex container -->
+  <main class="main-content">
+    <div class="album-grid" id="albumGrid">
+      <div class="spinner" id="spinner"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
     <a href="index.html" class="back-link">← Back to Album of the Week</a>
   </footer>
-    
+
   <script src="script.js"></script>
 </body>
 </html>
