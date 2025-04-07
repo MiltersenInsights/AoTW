@@ -2,6 +2,19 @@
 /* Part 1: Base & Header Layout */
 /********************************/
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
 body {
   font-family: 'Arial', sans-serif;
   background-color: #212121;
@@ -12,6 +25,8 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 body.loaded {
@@ -163,9 +178,13 @@ body.loaded {
   gap: 24px 0; /* vertical spacing only */
   overflow-x: auto;
   padding: 20px 40px 45px 20px; /* top right bottom left */
-  padding-bottom: 60px; /* enough room for footer */
+  padding-bottom: 70px; /* enough room for footer */
   max-width: 1200px;
   margin: auto;
+}
+
+.album-grid > .album-item:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
@@ -280,36 +299,20 @@ body.loaded {
   100% { transform: rotate(360deg); }
 }
 
-/* Footer */
-.sticky-footer {
-  position: fixed;
+.footer {
+  position: fixed;               /* ✅ Always visible */
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 44px; /* ✅ slightly taller */
+  height: 50px;
   background-color: rgba(18,18,18,0.95);
-  padding: 0; /* keep this at 0 */
   display: flex;
-  align-items: center;  /* ✅ vertical centering */
+  align-items: center;
   justify-content: center;
   z-index: 100;
   border-top: 1px solid rgba(255,255,255,0.1);
   text-align: center;
-}
-
-.sticky-footer .back-link {
-  font-size: 0.9rem;
-  color: #f5c34b;
-  font-weight: 500;
-  text-decoration: none;
-  line-height: 1;
-}
-
-.sticky-footer .back-link:hover {
-  text-decoration: underline;
-  color: #ffd666;
-}
-
+}	
 
 /* Background Overlay */
 .background-overlay {
@@ -391,13 +394,14 @@ h2#album-title {
   color: #fff;
 }
 
-.back-link {
-  font-size: 1.4rem;
+.footer .back-link {
+  font-size: 0.9rem;
   color: #f5c34b;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
-  margin-top: 30px;
-  display: inline-block;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
 }
 
 .back-link:hover {
