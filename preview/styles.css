@@ -205,8 +205,15 @@ body.loaded {
 }
 
 @media (max-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 0;
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
   .album-item {
-    transform: translateX(-30px); /* create consistent overlap */
+    transform: translateX(-30px); /* overlap to the left */
   }
 
   .album-item:nth-child(2n + 1) {
@@ -214,11 +221,7 @@ body.loaded {
   }
 
   .album-item:hover {
-    transform: translateX(-30px) scale(1.05); /* optional scale on tap */
-  }
-
-  .album-item:nth-child(2n + 1):hover {
-    transform: scale(1.05); /* no sideways shift for left column */
+    transform: scale(1.05); /* optional touch-enhanced zoom */
   }
 }
 
