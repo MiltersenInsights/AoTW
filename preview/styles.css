@@ -12,8 +12,8 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-top: 95px;
 }
-
 
 body {
   font-family: 'Arial', sans-serif;
@@ -34,17 +34,21 @@ body.loaded {
 }
 
 .sticky-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  height: 130px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.6); /* 💡 More transparent */
+  backdrop-filter: blur(8px);           /* ✅ Glassy blur */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.85);
   padding: 0 20px;
-  z-index: 100;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); /* Smooth drop shadow */
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .sticky-header h1 {
@@ -85,6 +89,13 @@ body.loaded {
   margin-top: 4px;
 }
 
+.search-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
 .dropdown-row {
   display: flex;
   gap: 8px;
@@ -103,7 +114,7 @@ body.loaded {
 }
 
 .search-bar {
-  width: 220px;
+  width: 230px;	
 }
 
 .sort-dropdown {
@@ -128,10 +139,11 @@ body.loaded {
   border: 2px solid #f5c34b;
   color: #f5c34b;
   font-size: 0.85rem;
-  padding: 5px 12px;
+  padding: 5px 10px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  height: 30px;             /* Match search/dropdown height */
+  white-space: nowrap;
 }
 
 .info-toggle-button.active {
@@ -178,7 +190,7 @@ body.loaded {
   gap: 24px 0; /* vertical spacing only */
   overflow-x: auto;
   padding: 20px 40px 45px 20px; /* top right bottom left */
-  padding-bottom: 70px; /* enough room for footer */
+  padding-bottom: 60px; /* enough room for footer */
   max-width: 1200px;
   margin: auto;
 }
@@ -195,7 +207,7 @@ body.loaded {
   }
 
   .album-item {
-    transform: translateX(-30px); /* overlap to the left */
+
   }
 
   .album-item:nth-child(2n + 1) {
@@ -211,6 +223,7 @@ body.loaded {
 
 .album-item {
   position: relative;
+  isolation: isolate; /* ✅ KEY: create stacking context */
   border-radius: 5px;
   background-size: cover;
   background-position: center;
@@ -219,8 +232,8 @@ body.loaded {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   min-width: 220px;
-  margin-left: -50px; /* Create horizontal overlap */
-  transition: transform 0.5s ease, z-index 0.2s;
+  margin-left: -50px;
+  transition: transform 0.5s ease;
   z-index: 1;
 }
 
@@ -243,8 +256,6 @@ body.loaded {
 
 .album-item:hover {
   transform: scale(1.05);
-  transform: translateY(0px) scale(1.05);
-  z-index: 10;
 }
 
 .album-item:active {
@@ -300,19 +311,39 @@ body.loaded {
 }
 
 .footer {
-  position: fixed;               /* ✅ Always visible */
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 50px;
-  background-color: rgba(18,18,18,0.95);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 999;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-}	
+  font-size: 0.85rem;
+  padding: 0;
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+
+.footer .back-link {
+  color: #f5c34b;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1;           /* ✅ Avoid stretching */
+  padding: 0;
+  margin: 0;
+}
+
+.back-link:hover {
+  color: #e1b000;
+  text-decoration: underline;
+}
 
 /* Background Overlay */
 .background-overlay {
@@ -394,17 +425,3 @@ h2#album-title {
   color: #fff;
 }
 
-.footer .back-link {
-  font-size: 0.9rem;
-  color: #f5c34b;
-  font-weight: 500;
-  text-decoration: none;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
-}
-
-.back-link:hover {
-  color: #e1b000;
-  text-decoration: underline;
-}
