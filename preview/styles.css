@@ -191,10 +191,12 @@ body.loaded {
   overflow-x: auto;
   padding: 20px 40px 45px 20px; /* top right bottom left */
   padding-bottom: 60px; /* enough room for footer */
+  padding-right: 30px; /* adds space for scaled album */
   max-width: 1200px;
   margin: auto;
   width: 100vw;
   overflow-x: hidden; /* ✅ locks to screen width */
+  overflow: visible;
   margin: 0 auto;
 }
 
@@ -203,26 +205,20 @@ body.loaded {
 }
 
 @media (max-width: 768px) {
-  .album-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 0;
-    padding: 16px;
-  }
-
   .album-item {
-    transform: translateX(-30px);
+    transform: translateX(-30px); /* create consistent overlap */
   }
 
   .album-item:nth-child(2n + 1) {
-    transform: translateX(0); /* reset left column */
+    transform: translateX(0); /* reset for left-column albums */
   }
 
   .album-item:hover {
-    transform: translateX(-30px) scale(1.05);
+    transform: translateX(-30px) scale(1.05); /* optional scale on tap */
   }
 
   .album-item:nth-child(2n + 1):hover {
-    transform: scale(1.05); /* left item doesn't shift */
+    transform: scale(1.05); /* no sideways shift for left column */
   }
 }
 
