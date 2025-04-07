@@ -193,6 +193,9 @@ body.loaded {
   padding-bottom: 60px; /* enough room for footer */
   max-width: 1200px;
   margin: auto;
+  width: 100vw;
+  overflow-x: hidden; /* ✅ locks to screen width */
+  margin: 0 auto;
 }
 
 .album-grid > .album-item:last-child {
@@ -207,11 +210,19 @@ body.loaded {
   }
 
   .album-item {
-
+    transform: translateX(-30px);
   }
 
   .album-item:nth-child(2n + 1) {
-    transform: translateX(0); /* reset for left-column albums */
+    transform: translateX(0); /* reset left column */
+  }
+
+  .album-item:hover {
+    transform: translateX(-30px) scale(1.05);
+  }
+
+  .album-item:nth-child(2n + 1):hover {
+    transform: scale(1.05); /* left item doesn't shift */
   }
 }
 
