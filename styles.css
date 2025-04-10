@@ -340,19 +340,33 @@ body.loaded {
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-
 .footer .back-link {
-  color: #f5c34b;
-  font-weight: 500;
+  color: #f5c34b;		/* Default whiskey gold */
+  font-weight: 600;
   text-decoration: none;
   line-height: 1;           /* ✅ Avoid stretching */
   padding: 0;
   margin: 0;
 }
 
+.back-link,
+.back-link:link {
+  color: #f5c34b; /* Whiskey gold */
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .back-link:hover {
-  color: #e1b000;
+  color: #ffd666;            /* Brighter gold on hover */
   text-decoration: underline;
+}
+
+.back-link:active {
+  color: #e1b000;            /* Slightly darker on press */
+}
+
+.back-link:visited {
+  color: #cfa52e;            /* Muted gold for visited links */
 }
 
 /* Background Overlay */
@@ -432,5 +446,5 @@ h2#album-title {
 .posted-by {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #fff;
+  color: #f5c34b;
 }
