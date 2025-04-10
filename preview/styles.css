@@ -203,23 +203,22 @@ body.loaded {
 .album-grid > .album-item:last-child {
   margin-bottom: 0;
 }
-
 @media (max-width: 768px) {
   .album-grid {
-    grid-template-columns: repeat(3, 1fr); /* 👈 Three across */
-    gap: 20px;
-    padding: 16px;
-    padding-right: 12px; /* ✅ Give right items breathing room */
-    margin: 0 auto;
-    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 20px; /* Consistent spacing between items */
+    padding: 16px; /* Adjusted padding */
+    margin: 0 auto; /* Center the grid */
+    box-sizing: border-box; /* Ensure padding is included in width calculations */
   }
 
   .album-item {
-    transform: translateX(-30px); /* overlap to the left */
-    margin-left: -16px; /* Moderate horizontal overlap */
+    margin: 0; /* Reset margin */
+    transform: none; /* Remove any transformations */
   }
 
-  .album-item:nth-child(3n + 1) {
+.album-item:nth-child(3n + 1) {
     transform: translateX(0); /* reset for leftmost albums */
     margin-left: 0;           /* no negative margin */
   }
