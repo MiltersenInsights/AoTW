@@ -245,7 +245,7 @@ body.loaded {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   min-width: 220px;
-  margin-left: -50px;
+  margin-left: 0;
   transition: transform 0.5s ease;
   z-index: 1;
 }
