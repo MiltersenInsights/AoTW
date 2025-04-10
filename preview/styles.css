@@ -207,7 +207,7 @@ body.loaded {
 @media (max-width: 768px) {
   .album-grid {
     grid-template-columns: repeat(3, 1fr); /* 👈 Three across */
-    gap: 20px 0;
+    gap: 20px;
     padding: 16px;
     padding-right: 12px; /* ✅ Give right items breathing room */
     margin: 0 auto;
