@@ -210,6 +210,8 @@ body.loaded {
     gap: 0;                      /* Remove gap */
     padding: 0 12px;
     box-sizing: border-box;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 
   .album-item {
