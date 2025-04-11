@@ -211,7 +211,7 @@ body.loaded {
       gap: 20px;
       margin: 0 auto;                         /* Always center the grid */
       padding: 16px;
-      transform: scale(0.95);                 /* Slight zoom-out */
+      transform: scale(0.6);                  /* Slight zoom-out */
       transform-origin: top center;
       width: 100%;
       max-width: 100vw;                       /* Prevent horizontal overflow */
