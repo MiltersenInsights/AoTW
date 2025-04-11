@@ -208,9 +208,9 @@ body.loaded {
     .album-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);  /* 3 across on mobile */
-      gap: 20px;
+      gap: 0px;
       margin: 0 auto;                         /* Always center the grid */
-      padding: 16px;
+      padding: 0px;
       transform: scale(0.6);                  /* Slight zoom-out */
       transform-origin: top center;
       width: 100%;
