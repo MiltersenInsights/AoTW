@@ -210,14 +210,14 @@ body.loaded {
     gap: 0;                      /* Remove gap */
     padding: 0 12px;
     box-sizing: border-box;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .album-item {
     margin: 0; /* Reset margin */
     margin-left: -20px;
-    transform: scale(0.8);
+    transform: scale(0.6);
   transform-origin: center center;
   }
 
