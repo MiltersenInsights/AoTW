@@ -203,16 +203,6 @@ body.loaded {
 .album-grid > .album-item:last-child {
   margin-bottom: 0;
 }
-/*
-@media (max-width: 768px) {
-  .album-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-    gap: 20px; /* Consistent spacing between items */
-    padding: 16px; /* Adjusted padding */
-    margin: 0 auto; /* Center the grid */
-    box-sizing: border-box; /* Ensure padding is included in width calculations */
-  } */
 
 @media (max-width: 768px) {
   .album-grid {
