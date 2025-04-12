@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Album Statistics</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var queryString = encodeURIComponent('SELECT A, B');
+        var dataSourceUrl = 'https://docs.google.com/spreadsheets/d/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/gviz/tq?sheet=Sheet1&range=A1:B10&tq=' + queryString;
+
+        var query = new google.visualization.Query(dataSourceUrl);
+        query.send(handleQueryResponse);
+      }
+
+      function handleQueryResponse(response) {
+        if (response.isError()) {
+          alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+          return;
+        }
+
+        var data = response.getDataTable();
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, {title: 'Top 10 Bands'});
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Album Statistics</h1>
+    <div id="chart_div" style="width: 800px; height: 600px;"></div>
+  </body>
+</html>
