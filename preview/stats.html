@@ -10,7 +10,6 @@
       function drawChart() {
         var queryString = encodeURIComponent('SELECT A, B');
         var dataSourceUrl = 'https://docs.google.com/spreadsheets/d/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/gviz/tq?sheet=jsonGenre&range=a1:b500&tq=' + queryString;
-
         var query = new google.visualization.Query(dataSourceUrl);
         query.send(handleQueryResponse);
       }
