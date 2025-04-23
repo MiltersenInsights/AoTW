@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Album Statistics</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+      // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var queryString = encodeURIComponent('SELECT A, B');
-        var dataSourceUrl = 'https://docs.google.com/spreadsheets/d/1-w0wJOoCeoN9KCt2J_wIaDQ5tB_FPJV0q9RHF7xzRvw/gviz/tq?sheet=jsonGenre&range=a1:b500&tq=' + queryString;
-        var query = new google.visualization.Query(dataSourceUrl);
-        query.send(handleQueryResponse);
-      }
+        // Replace with your actual Google Sheets URL
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThbR473UBAX8180UMsGB9nwVuZ0-J3tjKIuN1jLqYOfeZKRXZsJVcSPUI-lpJoLzLLXXe__9utoFoA/gviz/tq?sheet=jsonGenre&range=A1:B500';
+        fetch(sheetUrl)
+          .then(response => response.text())
+          .then(data => {
+            // Parse the JSON data from the response
+            const jsonData = JSON.parse(data.substr(47).slice(0, -2));
+            const rows = jsonData.table.rows;
 
-      function handleQueryResponse(response) {
-        if (response.isError()) {
-          alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-          return;
-        }
+            // Extract years and count albums per decade
+            const decadeCounts = {};
+            rows.forEach(row => {
+              const albumStr = row.c[0]?.v;
+              if (albumStr) {
+                const yearMatch = albumStr.match(/\((\d{4})\)/);
+                if (yearMatch) {
+                  const year = parseInt(yearMatch[1]);
+                  const decade = Math.floor(year / 10) * 10;
+                  decadeCounts[decade] = (decadeCounts[decade] || 0) + 1;
+                }
+              }
+            });
 
-        var data = response.getDataTable();
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-        chart.draw(data, {title: 'Top 10 Bands'});
+            // Prepare data for the chart
+            const chartData = [['Decade', 'Number of Albums']];
+            Object.keys(decadeCounts).sort().forEach(decade => {
+              chartData.push([decade.toString(), decadeCounts[decade]]);
+            });
+
+            // Create the data table.
+            const dataTable = google.visualization.arrayToDataTable(chartData);
+
+            // Set chart options
+            const options = {
+              title: 'Albums Per Decade',
+              hAxis: {
+                title: 'Decade',
+                format: '####'
+              },
+              vAxis: {
+                title: 'Number of Albums'
+              },
+              legend: { position: 'none' },
+              colors: ['#f5c34b']
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(dataTable, options);
+          })
+          .catch(error => {
+            console.error('Error fetching or parsing data:', error);
+          });
       }
     </script>
   </head>
   <body>
     <h1>Album Statistics</h1>
-    <div id="chart_div" style="width: 800px; height: 600px;"></div>
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
   </body>
 </html>
