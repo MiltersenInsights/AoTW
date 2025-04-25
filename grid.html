@@ -6,6 +6,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AoTW Collection</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 
 <body class="grid-page">
@@ -14,10 +23,10 @@
   <div class="sticky-header">
     <h1>Album of the Week Collection</h1>
     <div class="control-block">
-	<div class="search-row">
-	  <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
-	  <button id="toggleInfo" class="info-toggle-button">Info</button>
-	</div>
+      <div class="search-row">
+        <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
+        <button id="toggleInfo" class="info-toggle-button">Info</button>
+      </div>
       <div class="dropdown-row">
         <select id="posterFilter" class="sort-dropdown">
           <option value="">Filter by poster</option>
