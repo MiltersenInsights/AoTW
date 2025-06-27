@@ -152,7 +152,6 @@ const renderTable = (albums) => {
       <td>${a.Date}</td>
       <td>${a["Posted by"]}</td>
       <td>${a.Album}</td>
-      <td class="comment-cell">${a["Poster Comment"] || ""}</td>
       <td><a href="${a["Spotify Link"] || "#"}" target="_blank">🔗</a></td>
     `;
     albumRows.appendChild(tr);
