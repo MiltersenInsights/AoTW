@@ -298,7 +298,6 @@ body.loaded {
   display: none;
 }
 
-
 /*******************************************/
 /* Part 4: Spinner, Footer, and Background */
 /*******************************************/
@@ -469,4 +468,73 @@ h2#album-title {
 
 .aotw-cta:active {
   background-color: #e1b000;
+}
+
+/*******************************************/
+/* Part 6: Table Page Styling              */
+/*******************************************/
+
+.album-table {
+  max-width: 1200px;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.album-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.album-table thead {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
+.album-table th,
+.album-table td {
+  padding: 4px 6px;
+  text-align: left;
+  color: #faf9f6;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.album-table th {
+  color: #f5c34b;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.album-table tbody tr:hover {
+  background: rgba(245, 195, 60, 0.1);
+}
+
+.album-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.album-table tbody tr td:last-child a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #f5c34b;
+  color: #1e1e1e;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.album-table tbody tr td:last-child a:hover {
+  background: #e1b000;
+}
+
+.table-view #toggleInfo {
+  display: none;
 }
