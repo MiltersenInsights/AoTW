@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AoTW Collection</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-062892VGED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-062892VGED');
+  </script>
+</head>
+
+<body class="grid-page">
+  <div class="background-overlay"></div>
+
+  <div class="sticky-header">
+    <h1>Album of the Week Collection (Table View) </h1>
+    <div class="control-block">
+      <div class="search-row">
+        <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
+        <button id="toggleInfo" class="info-toggle-button">Info</button>
+	<button onclick="window.location.href='grid.html'" class="info-toggle-button">Grid View</button>
+      </div>
+      <div class="dropdown-row">
+        <select id="posterFilter" class="sort-dropdown">
+          <option value="">Filter by poster</option>
+        </select>
+        <select id="sortSelect" class="sort-dropdown">
+          <option value="newest" selected>Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">Title A–Z</option>
+          <option value="za">Title Z–A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Wrap main content in Flex container -->
+  <main class="main-content">
+
+<div class="album-table" id="albumTable">
+  <div class="spinner" id="spinner"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Poster</th>
+        <th>Band – Album (Year)</th>
+        <th>Comment</th>
+        <th>Spotify</th>
+      </tr>
+    </thead>
+    <tbody id="albumRows"></tbody>
+  </table>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <a href="index.html" class="back-link">← Back to Album of the Week</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
