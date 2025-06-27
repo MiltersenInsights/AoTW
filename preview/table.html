@@ -17,7 +17,7 @@
   </script>
 </head>
 
-<body class="grid-page">
+<body class="grid-page table-view">
   <div class="background-overlay"></div>
 
   <div class="sticky-header">
@@ -25,6 +25,7 @@
     <div class="control-block">
       <div class="search-row">
         <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
+        <button id="toggleInfo" class="info-toggle-button">Info</button>
         <button onclick="window.location.href='grid.html'" class="info-toggle-button">Grid View</button>
       </div>
       <div class="dropdown-row">
@@ -41,10 +42,10 @@
     </div>
   </div>
 
-  <!-- ✅ Wrap main content in Flex container -->
   <main class="main-content">
-    <div class="table-container">
-      <table class="album-table">
+    <div class="album-table" id="albumTable">
+      <div class="spinner" id="spinner"></div>
+      <table>
         <thead>
           <tr>
             <th>Date Posted</th>
@@ -53,9 +54,7 @@
             <th>Spotify</th>
           </tr>
         </thead>
-        <tbody id="albumRows">
-          <tr><td colspan="4"><div class="spinner" id="spinner"></div></td></tr>
-        </tbody>
+        <tbody id="albumRows"></tbody>
       </table>
     </div>
   </main>
