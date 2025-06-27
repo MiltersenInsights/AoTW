@@ -298,6 +298,7 @@ body.loaded {
   display: none;
 }
 
+
 /*******************************************/
 /* Part 4: Spinner, Footer, and Background */
 /*******************************************/
@@ -445,4 +446,27 @@ h2#album-title {
   font-size: 1.1rem;
   font-weight: 500;
   color: #f5c34b;
+}
+
+.aotw-cta {
+  display: inline-block;
+  background-color: #f5c34b;
+  color: #1c1c1c;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 14px 24px;
+  margin-top: 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.aotw-cta:hover {
+  background-color: #ffd666;
+  transform: scale(1.03);
+}
+
+.aotw-cta:active {
+  background-color: #e1b000;
 }
