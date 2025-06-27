@@ -448,108 +448,72 @@ h2#album-title {
 }
 
 
-.aotw-cta {
-  display: inline-block;
-  background-color: #f5c34b;
-  color: #1c1c1c;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 14px 24px;
-  margin-top: 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.aotw-cta:hover {
-  background-color: #ffd666;
-  transform: scale(1.03);
-}
-
-.aotw-cta:active {
-  background-color: #e1b000;
-}
-
 /*******************************************/
 /* Part 6: Table Page Styling              */
 /*******************************************/
 
 .album-table {
-  padding: 60px 20px;
   max-width: 1200px;
-  margin: 0 auto;
-  overflow-x: auto;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .album-table table {
   width: 100%;
   border-collapse: collapse;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 0.9rem;
 }
 
-.album-table th, .album-table td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 10px;
-  text-align: left;
-  vertical-align: top;
-}
-
-.album-table th {
-  background-color: rgba(245, 195, 75, 0.15);
-  color: #f5c34b;
+.album-table thead {
   position: sticky;
   top: 0;
-  z-index: 1;
-}
-
-.album-table a {
-  color: #f5c34b;
-  text-decoration: underline;
-}
-
-.table-container {
-  overflow-x: auto;
-  margin: 20px;
-  padding-bottom: 60px; /* space for footer */
-}
-
-.album-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #faf9f6;
-  border-radius: 6px;
-  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
 }
 
 .album-table th,
 .album-table td {
-  padding: 12px 16px;
+  padding: 4px 6px;
   text-align: left;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #faf9f6;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .album-table th {
-  background-color: rgba(30, 30, 30, 0.8);
+  color: #f5c34b;
   font-weight: 600;
-  color: #f5c34b;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-.album-table tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.album-table tbody tr:hover {
+  background: rgba(245, 195, 60, 0.1);
 }
 
-.album-table a {
-  color: #f5c34b;
-  text-decoration: none;
+.album-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
 }
-.album-table a:hover {
-  color: #ffd666;
-  text-decoration: underline;
+
+.album-table tbody tr td:last-child a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #f5c34b;
+  color: #1e1e1e;
+  border-radius: 50%;
+  transition: background 0.3s;
 }
+
+.album-table tbody tr td:last-child a:hover {
+  background: #e1b000;
+}
+
+.table-view #toggleInfo {
+  display: none;
+}
+
