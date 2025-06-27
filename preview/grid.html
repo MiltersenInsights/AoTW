@@ -6,29 +6,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AoTW Collection</title>
-	
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-062892VGED"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-062892VGED');
-    </script>	
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Album of the Week Collection">
-    <meta property="og:description" content="Explore our curated collection of albums shared weekly.">
-    <meta property="og:image" content="https://milterseninsights.github.io/AoTW/assets/share-thumbnail.png">
-    <meta property="og:url" content="https://milterseninsights.github.io/AoTW/">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Album of the Week Collection">
-    <meta name="twitter:description" content="Explore our curated collection of albums shared weekly.">
-    <meta name="twitter:image" content="https://milterseninsights.github.io/AoTW/assets/share-thumbnail.png">
-    
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-062892VGED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-062892VGED');
+  </script>
 </head>
 
 <body class="grid-page">
@@ -37,10 +23,11 @@
   <div class="sticky-header">
     <h1>Album of the Week Collection</h1>
     <div class="control-block">
-	<div class="search-row">
-	  <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
-	  <button id="toggleInfo" class="info-toggle-button">Info</button>
-	</div>
+      <div class="search-row">
+        <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
+        <button id="toggleInfo" class="info-toggle-button">Info</button>
+	<button onclick="href='table.html'" class="info-toggle-button">Table View</button>
+      </div>
       <div class="dropdown-row">
         <select id="posterFilter" class="sort-dropdown">
           <option value="">Filter by poster</option>
