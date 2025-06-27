@@ -21,12 +21,12 @@
   <div class="background-overlay"></div>
 
   <div class="sticky-header">
-    <h1>Album of the Week Collection (Table View) </h1>
+    <h1>Album of the Week Collection (Table View)</h1>
     <div class="control-block">
       <div class="search-row">
         <input type="text" id="albumSearch" class="search-bar" placeholder="Search albums..." />
         <button id="toggleInfo" class="info-toggle-button">Info</button>
-	<button onclick="window.location.href='grid.html'" class="info-toggle-button">Grid View</button>
+        <button onclick="window.location.href='grid.html'" class="info-toggle-button">Grid View</button>
       </div>
       <div class="dropdown-row">
         <select id="posterFilter" class="sort-dropdown">
@@ -44,22 +44,21 @@
 
   <!-- ✅ Wrap main content in Flex container -->
   <main class="main-content">
-
-<div class="album-table" id="albumTable">
-  <div class="spinner" id="spinner"></div>
-  <table>
-    <thead>
-      <tr>
-        <th>Date Posted</th>
-        <th>Poster</th>
-        <th>Band – Album (Year)</th>
-        <th>Spotify</th>
-      </tr>
-    </thead>
-    <tbody id="albumRows"></tbody>
-  </table>
-</div>
-
+    <div class="table-container">
+      <table class="album-table">
+        <thead>
+          <tr>
+            <th>Date Posted</th>
+            <th>Poster</th>
+            <th>Band – Album (Year)</th>
+            <th>Spotify</th>
+          </tr>
+        </thead>
+        <tbody id="albumRows">
+          <tr><td colspan="4"><div class="spinner" id="spinner"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer class="footer">
