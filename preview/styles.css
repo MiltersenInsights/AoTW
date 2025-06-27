@@ -446,3 +446,43 @@ h2#album-title {
   font-weight: 500;
   color: #f5c34b;
 }
+
+
+/*******************************************/
+/* Part 6: Table Page Styling              */
+/*******************************************/
+
+.album-table {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.album-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.album-table th, .album-table td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.album-table th {
+  background-color: rgba(245, 195, 75, 0.15);
+  color: #f5c34b;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.album-table a {
+  color: #f5c34b;
+  text-decoration: underline;
+}
