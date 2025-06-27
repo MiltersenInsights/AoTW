@@ -11,9 +11,10 @@ async function fetchAlbums() {
     }
 
     const albumGrid = document.getElementById("albumGrid");
+    const albumRows = document.getElementById("albumRows");
 
     if (albumGrid) {
-      // ✅ We are on grid.html
+      // ✅ grid.html logic
       const searchInput = document.getElementById("albumSearch");
       const sortSelect = document.getElementById("sortSelect");
       const posterFilter = document.getElementById("posterFilter");
@@ -21,27 +22,19 @@ async function fetchAlbums() {
       const spinner = document.getElementById("spinner");
 
       let allAlbums = [...data];
-
-      // Sort initially by newest
       allAlbums.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      // Toggle handling
       const infoToggleButton = document.getElementById("toggleInfo");
-
       infoToggleButton.addEventListener("click", () => {
-      infoToggleButton.classList.toggle("active");
-    
-      const showInfo = infoToggleButton.classList.contains("active");
-      const albumItems = document.querySelectorAll(".album-item");
-    
-      albumItems.forEach(item => {
-        item.classList.toggle("hide-info", !showInfo);
+        infoToggleButton.classList.toggle("active");
+        const showInfo = infoToggleButton.classList.contains("active");
+        const albumItems = document.querySelectorAll(".album-item");
+        albumItems.forEach(item => {
+          item.classList.toggle("hide-info", !showInfo);
         });
       });
 
-      // Populate filter dropdown
-      const uniquePosters = [...new Set(allAlbums.map(a => a["Posted by"]).filter(Boolean))];
-      uniquePosters.sort();
+      const uniquePosters = [...new Set(allAlbums.map(a => a["Posted by"]).filter(Boolean))].sort();
       uniquePosters.forEach(poster => {
         const option = document.createElement("option");
         option.value = poster;
@@ -116,10 +109,7 @@ async function fetchAlbums() {
         renderAlbums(filtered);
       };
 
-      // Initial render
       renderAlbums(allAlbums);
-
-      // Hook up listeners
       searchInput.addEventListener("input", filterAndRender);
       sortSelect.addEventListener("change", filterAndRender);
       posterFilter.addEventListener("change", filterAndRender);
@@ -134,10 +124,88 @@ async function fetchAlbums() {
 
       spinner?.remove();
       document.body.classList.add("loaded");
-    } else {
-      // ✅ We are on index.html
-      const latestAlbum = data[data.length - 1];
 
+    } else if (albumRows) {
+      // ✅ table.html logic
+      const searchInput = document.getElementById("albumSearch");
+      const sortSelect = document.getElementById("sortSelect");
+      const posterFilter = document.getElementById("posterFilter");
+      const toggleInfo = document.getElementById("toggleInfo");
+      const spinner = document.getElementById("spinner");
+
+      let allAlbums = [...data];
+      allAlbums.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+      const uniquePosters = [...new Set(allAlbums.map(a => a["Posted by"]).filter(Boolean))].sort();
+      uniquePosters.forEach(poster => {
+        const opt = document.createElement("option");
+        opt.value = poster;
+        opt.textContent = poster;
+        posterFilter.appendChild(opt);
+      });
+
+const renderTable = (albums) => {
+  albumRows.innerHTML = "";
+  albums.forEach(a => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${a.Date}</td>
+      <td>${a["Posted by"]}</td>
+      <td>${a.Album}</td>
+      <td class="comment-cell">${a["Poster Comment"] || ""}</td>
+      <td><a href="${a["Spotify Link"] || "#"}" target="_blank">🔗</a></td>
+    `;
+    albumRows.appendChild(tr);
+  });
+};
+
+      const filterAndRender = () => {
+        let filtered = [...allAlbums];
+        const q = searchInput.value.toLowerCase();
+        if (q) {
+          filtered = filtered.filter(a =>
+            (a.Album || "").toLowerCase().includes(q) ||
+            (a["Posted by"] || "").toLowerCase().includes(q) ||
+            (a.Date || "").toLowerCase().includes(q)
+          );
+        }
+
+        if (posterFilter.value) {
+          filtered = filtered.filter(a => a["Posted by"] === posterFilter.value);
+        }
+
+        switch (sortSelect.value) {
+          case "oldest":
+            filtered.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+            break;
+          case "az":
+            filtered.sort((a, b) => a.Album.localeCompare(b.Album));
+            break;
+          case "za":
+            filtered.sort((a, b) => b.Album.localeCompare(a.Album));
+            break;
+          default:
+            filtered.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        }
+
+        renderTable(filtered);
+      };
+
+      toggleInfo.addEventListener("click", () => {
+        toggleInfo.classList.toggle("active");
+        filterAndRender();
+      });
+
+      renderTable(allAlbums);
+      searchInput.addEventListener("input", filterAndRender);
+      sortSelect.addEventListener("change", filterAndRender);
+      posterFilter.addEventListener("change", filterAndRender);
+
+      spinner?.remove();
+      document.body.classList.add("loaded");
+    } else {
+      // ✅ index.html logic
+      const latestAlbum = data[data.length - 1];
       document.getElementById("album-title").textContent = latestAlbum.Album || "Unknown Album";
       document.getElementById("posted-by").textContent = `- ${latestAlbum["Posted by"] || "Unknown"}`;
       document.getElementById("posted-date").textContent = `Posted: ${latestAlbum.Date || "Unknown Date"}`;
@@ -155,6 +223,7 @@ async function fetchAlbums() {
 
       document.body.classList.add("loaded");
     }
+
   } catch (error) {
     console.error("Error loading album:", error);
     document.body.classList.add("loaded");
