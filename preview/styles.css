@@ -651,3 +651,59 @@ main{ padding-bottom: var(--footer-h); }
 @media (max-width: 899px){
   .album-card:hover{ transform: none; }
 }
+
+/* ==============================================
+   AoTW — Mobile fine-tuning (v1)
+   Goal: 3-up mobile grid, 2px outer gutters, no base zoom,
+         slight 5%-ish overlap on tap (like desktop hover)
+   Paste this at the END of styles.css
+   ============================================== */
+
+:root{
+  --mobile-outer-gutter: 2px;  /* left/right padding on mobile */
+  --mobile-gap: 8px;           /* inner spacing between cards */
+  --mobile-pop-scale: 1.03;    /* try 1.02–1.05 to tune overlap “feel” */
+}
+
+/* Reset legacy mobile transforms/negative margins */
+@media (max-width: 479px){
+  .album-grid{
+    /* Lock clean 3-up layout, no weird zooming of the whole grid */
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    padding-left: var(--mobile-outer-gutter) !important;
+    padding-right: var(--mobile-outer-gutter) !important;
+    padding-top: 12px;
+    padding-bottom: 60px; /* clear sticky footer */
+    margin: 0 auto !important;
+    gap: var(--mobile-gap) !important;
+    transform: none !important;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Remove old offsets that caused left padding/shift */
+  .album-grid .album-item{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+  }
+
+  /* Card visual polish + tap “pop” baseline */
+  .album-grid .album-item{
+    border-radius: 8px;
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    will-change: transform;
+  }
+
+  /* Recreate the desktop-style overlap on mobile: on tap */
+  .album-grid .album-item.touch-pop{
+    transform: scale(var(--mobile-pop-scale)) !important;
+    z-index: 5;
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    filter: saturate(1.02);
+  }
+
+  /* Ensure the anchor wrapper does not clip */
+  .album-grid a{ overflow: visible; }
+}
