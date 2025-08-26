@@ -64,7 +64,7 @@ async function fetchAlbums() {
             <div class="album-info">
               <h3>${album.Album}</h3>
               <div class="album-meta">
-                <span>Posted by: ${album["Posted by"]}</span>
+                <span>Posted by ${album["Posted by"]}</span>
                 <span> on ${album.Date}</span>
               </div>
             </div>
