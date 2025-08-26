@@ -647,3 +647,7 @@ main{ padding-bottom: var(--footer-h); }
     gap: 6px;                 /* optional: tighter internal spacing */
   }
 }
+
+@media (max-width: 899px){
+  .album-card:hover{ transform: none; }
+}
