@@ -230,3 +230,40 @@ const renderTable = (albums) => {
 }
 
 fetchAlbums();
+
+/* ==============================================
+   AoTW — Mobile tap overlap (v1)
+   Goal: apply a short “pop” on tap to mimic desktop hover
+   Paste this near the bottom of script.js (after albums render)
+   ============================================== */
+
+(function enableMobileTapPop(){
+  const grid = document.getElementById("albumGrid");
+  if (!grid) return;
+
+  // Simple feature detect for touch-capable screens
+  const isTouch = matchMedia("(pointer: coarse)").matches;
+
+  if (!isTouch) return; // only do this on touch devices
+
+  // Delegate tap: add .touch-pop briefly on the tapped .album-item
+  grid.addEventListener("touchstart", (e) => {
+    const card = e.target.closest(".album-item");
+    if (!card) return;
+    // Remove existing pop
+    grid.querySelectorAll(".album-item.touch-pop").forEach(el => el.classList.remove("touch-pop"));
+    // Add pop
+    card.classList.add("touch-pop");
+    // Remove it shortly after, but allow navigation to proceed
+    setTimeout(() => card.classList.remove("touch-pop"), 220);
+  }, {passive: true});
+
+  // Also handle quick taps via mouse on small tablets
+  grid.addEventListener("click", (e) => {
+    if (!matchMedia("(max-width: 479px)").matches) return;
+    const card = e.target.closest(".album-item");
+    if (!card) return;
+    card.classList.add("touch-pop");
+    setTimeout(() => card.classList.remove("touch-pop"), 180);
+  });
+})();
