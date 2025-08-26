@@ -568,6 +568,7 @@ h2#album-title {
   --gutter: 12px;
   --radius: 10px;
   --footer-h: 64px; /* keep content clear of sticky footer */
+  --hover-scale: 1.04; /* try 1.03–1.07; lower = less overlap */
 }
 
 /* Base layout resets */
