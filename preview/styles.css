@@ -638,3 +638,12 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Ensure content never hides behind footer */
 main{ padding-bottom: var(--footer-h); }
+
+/* Mobile gutter control */
+@media (max-width: 479px){
+  .album-grid{
+    padding-left: 2px;
+    padding-right: 2px;
+    gap: 6px;                 /* optional: tighter internal spacing */
+  }
+}
