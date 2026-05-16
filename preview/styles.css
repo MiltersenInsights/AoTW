@@ -77,16 +77,6 @@ body.loaded {
   background: #d4a637;
 }
 
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(17,17,17,.85); /* or your theme color */
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
 /***************************************************/
 /* Part 2: Controls — Search, Filter, Sort, Toggle */
 /***************************************************/
@@ -348,17 +338,6 @@ body.loaded {
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-.site-footer{
-  position: sticky;
-  bottom: 0;
-  z-index: 900;
-  background: rgba(17,17,17,.9);
-  border-top: 1px solid rgba(255,255,255,.08);
-  min-height: var(--footer-h);
-  display: flex; align-items: center;
-  padding: 8px 16px;
-}
-
 .footer .back-link {
   color: #f5c34b;		/* Default whiskey gold */
   font-weight: 600;
@@ -468,242 +447,104 @@ h2#album-title {
   color: #f5c34b;
 }
 
-.aotw-cta {
-  display: inline-block;
-  background-color: #f5c34b;
-  color: #1c1c1c;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 14px 24px;
-  margin-top: 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.aotw-cta:hover {
-  background-color: #ffd666;
-  transform: scale(1.03);
-}
-
-.aotw-cta:active {
-  background-color: #e1b000;
-}
-
 /*******************************************/
-/* Part 6: Table Page Styling              */
+/* Part 6: Poster Comment Badge & Overlay  */
 /*******************************************/
 
-.album-table {
-  max-width: 1200px;
-  margin: 20px auto 60px;
-  padding: 0 20px;
+/* (i) badge — top-right of any cover that has a comment */
+.comment-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid #f5c34b;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-}
-
-.album-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.album-table thead {
-  position: sticky;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 2;
-}
-
-.album-table th,
-.album-table td {
-  padding: 4px 6px;
-  text-align: left;
-  color: #faf9f6;
-  font-size: 0.95rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.album-table th {
   color: #f5c34b;
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.album-table tbody tr:hover {
-  background: rgba(245, 195, 60, 0.1);
-}
-
-.album-table tbody tr:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.album-table tbody tr td:last-child a {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
+.comment-badge:hover {
   background: #f5c34b;
   color: #1e1e1e;
-  border-radius: 50%;
-  transition: background 0.3s;
 }
 
-.album-table tbody tr td:last-child a:hover {
-  background: #e1b000;
-}
-
-.table-view #toggleInfo {
+/* Hide the badge while its comment is open — the ✕ closes it instead */
+.album-item.comment-open .comment-badge {
   display: none;
 }
 
-/*******************************************/
-/* Part 7: Mobile Styling              */
-/*******************************************/
-
-:root{
-  --gutter: 12px;
-  --radius: 10px;
-  --footer-h: 64px; /* keep content clear of sticky footer */
-  --hover-scale: 1.04; /* try 1.03–1.07; lower = less overlap */
+/* Comment overlay — covers the cover art, hidden until opened */
+.album-comment {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
 }
 
-/* Base layout resets */
-main { padding-bottom: var(--footer-h); }
-img { max-width: 100%; height: auto; display: block; }
-
-/* Album Grid — clean & deterministic columns on mobile */
-.album-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 across on small screens */
-  gap: var(--gutter);
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 1200px;           /* center on large screens */
-  overflow: visible;           /* no horizontal scroll on mobile */
+.album-item.comment-open .album-comment {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Album Card */
-.album-card{
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;            /* ensure neat square crops */
-  box-shadow: 0 1px 6px rgba(0,0,0,.1);
-  transform: none;             /* kill any legacy scale() on mobile */
-  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-  will-change: transform;
+/* margin-block:auto centers short comments, stays scrollable for long ones */
+.album-comment-inner {
+  margin-block: auto;
+  padding: 32px 16px 16px;
+  text-align: center;
 }
 
-/* Square covers that always fill */
-.album-card img{
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+.album-comment-text {
+  margin: 0 0 8px;
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #f5c34b;
 }
 
-/* Tablet: add a column, still tight & clean */
-@media (min-width: 480px){
-  .album-grid{
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+.album-comment-by {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: #f5c34b;
+  opacity: 0.8;
 }
 
-/* Desktop: switch to auto-fill, enable tasteful overlap on hover only */
-@media (min-width: 900px){
-  .album-grid{
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 18px;
-    padding: 20px 24px 24px;
-  }
-  .album-card:hover{
-    transform: scale(1.06);            /* overlap neighbors only while hovering */
-    z-index: 2;
-    box-shadow: 0 8px 24px rgba(0,0,0,.18);
-    filter: saturate(1.05);
-  }
+.comment-close {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  z-index: 1;
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: #f5c34b;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Very large screens: room to breathe */
-@media (min-width: 1280px){
-  .album-grid{
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 22px;
-    padding: 24px 30px 40px 24px;
-  }
-}
-
-/* Ensure content never hides behind footer */
-main{ padding-bottom: var(--footer-h); }
-
-/* Mobile gutter control */
-@media (max-width: 479px){
-  .album-grid{
-    padding-left: 2px;
-    padding-right: 2px;
-    gap: 6px;                 /* optional: tighter internal spacing */
-  }
-}
-
-@media (max-width: 899px){
-  .album-card:hover{ transform: none; }
-}
-
-/* ==============================================
-   AoTW — Mobile fine-tuning (v1)
-   Goal: 3-up mobile grid, 2px outer gutters, no base zoom,
-         slight 5%-ish overlap on tap (like desktop hover)
-   Paste this at the END of styles.css
-   ============================================== */
-
-:root{
-  --mobile-outer-gutter: 2px;  /* left/right padding on mobile */
-  --mobile-gap: 8px;           /* inner spacing between cards */
-  --mobile-pop-scale: 1.03;    /* try 1.02–1.05 to tune overlap “feel” */
-}
-
-/* Reset legacy mobile transforms/negative margins */
-@media (max-width: 479px){
-  .album-grid{
-    /* Lock clean 3-up layout, no weird zooming of the whole grid */
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    padding-left: var(--mobile-outer-gutter) !important;
-    padding-right: var(--mobile-outer-gutter) !important;
-    padding-top: 12px;
-    padding-bottom: 60px; /* clear sticky footer */
-    margin: 0 auto !important;
-    gap: var(--mobile-gap) !important;
-    transform: none !important;
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  /* Remove old offsets that caused left padding/shift */
-  .album-grid .album-item{
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    transform: none !important;
-  }
-
-  /* Card visual polish + tap “pop” baseline */
-  .album-grid .album-item{
-    border-radius: 8px;
-    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
-    will-change: transform;
-  }
-
-  /* Recreate the desktop-style overlap on mobile: on tap */
-  .album-grid .album-item.touch-pop{
-    transform: scale(var(--mobile-pop-scale)) !important;
-    z-index: 5;
-    box-shadow: 0 8px 20px rgba(0,0,0,.2);
-    filter: saturate(1.02);
-  }
-
-  /* Ensure the anchor wrapper does not clip */
-  .album-grid a{ overflow: visible; }
+/* Slightly larger badge/text on mobile to offset the grid's 0.85 scale */
+@media (max-width: 768px) {
+  .comment-badge { width: 34px; height: 34px; font-size: 1.1rem; }
+  .album-comment-text { font-size: 0.95rem; }
 }
