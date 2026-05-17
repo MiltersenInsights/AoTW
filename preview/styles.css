@@ -447,39 +447,108 @@ h2#album-title {
   color: #f5c34b;
 }
 
+
 /*******************************************/
-/* Part 6: Poster Comment Badge & Overlay  */
+/* Part 6: Table Page Styling              */
+/*******************************************/
+
+.album-table {
+  max-width: 1200px;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.album-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.album-table thead {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
+.album-table th,
+.album-table td {
+  padding: 4px 6px;
+  text-align: left;
+  color: #faf9f6;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.album-table th {
+  color: #f5c34b;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.album-table tbody tr:hover {
+  background: rgba(245, 195, 60, 0.1);
+}
+
+.album-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.album-table tbody tr td:last-child a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #f5c34b;
+  color: #1e1e1e;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.album-table tbody tr td:last-child a:hover {
+  background: #e1b000;
+}
+
+.table-view #toggleInfo {
+  display: none;
+}
+
+/*******************************************/
+/* Part 7: Poster Comment Badge & Overlay  */
 /*******************************************/
 
 /* (i) badge — top-right of any cover that has a comment */
 .comment-badge {
   position: absolute;
   top: 8px;
-  right: 8px;
+  left: 8px;
   z-index: 3;
   width: 32px;
   height: 32px;
   padding: 0;
-  border-radius: 50%;
-  border: 1.5px solid #f5c34b;
-  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  background: transparent;
   color: #f5c34b;
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-weight: bold;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);  /* keeps the "i" readable on pale covers */
+  transition: color 0.2s ease;
 }
 
 .comment-badge:hover {
-  background: #f5c34b;
-  color: #1e1e1e;
+  color: #ffd666;
 }
 
 /* Hide the badge while its comment is open — the ✕ closes it instead */
