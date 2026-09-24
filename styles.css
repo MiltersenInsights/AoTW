@@ -263,7 +263,7 @@ body.loaded {
 }
 
 .album-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.20);
 }
 
 .album-item:active {
@@ -639,4 +639,164 @@ h2#album-title {
 @media (max-width: 768px) {
   .comment-badge { width: 34px; height: 34px; font-size: 1.1rem; }
   .album-comment-text { font-size: 0.95rem; }
+}
+
+/*******************************************/
+/* Part 8: Final Overrides                 */
+/* - Fixed header/footer restored          */
+/* - Music service switch                  */
+/* - Comment i moved to lower right        */
+/*******************************************/
+
+/* Restore/force floating header + footer */
+.sticky-header{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+}
+
+.footer{
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  min-height: 50px;
+  height: auto;
+  z-index: 9999 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  box-sizing: border-box;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+}
+
+.main-content{
+  padding-bottom: 76px;
+}
+
+body:not(.grid-page) .content{
+  padding-bottom: 86px;
+}
+
+/* Music service switch */
+.service-switch-wrap{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #f5c34b;
+  font-size: 0.78rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.service-switch-label{
+  opacity: 0.86;
+}
+
+.service-switch{
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid rgba(245, 195, 75, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.service-btn{
+  border: 0;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: transparent;
+  color: #f5c34b;
+  font: inherit;
+  font-size: 0.76rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.service-btn.active{
+  background: #f5c34b;
+  color: #1e1e1e;
+  font-weight: 700;
+}
+
+.service-btn:focus-visible{
+  outline: 2px solid #ffd666;
+  outline-offset: 2px;
+}
+
+/* Comment button: lower-right, visibly clickable, still subtle */
+.comment-badge{
+  top: auto !important;
+  left: auto !important;
+  right: 6px !important;
+  bottom: 6px !important;
+  z-index: 4 !important;
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(245, 195, 75, 0.55) !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #f5c34b !important;
+  font-size: 1rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.comment-badge:hover,
+.comment-badge:focus-visible{
+  background: rgba(245, 195, 75, 0.22) !important;
+  color: #ffd666 !important;
+}
+
+.comment-close{
+  top: 7px !important;
+  right: 7px !important;
+  left: auto !important;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.36);
+  border: 1px solid rgba(245, 195, 75, 0.45);
+}
+
+/* Avoid footer crowding on small phones */
+@media (max-width: 520px){
+  .footer{
+    justify-content: space-around;
+    gap: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .footer .back-link{
+    max-width: 44vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .service-switch-wrap{
+    gap: 4px;
+    font-size: 0.7rem;
+  }
+
+  .service-btn{
+    padding: 5px 7px;
+    font-size: 0.7rem;
+  }
+
+  .comment-badge{
+    width: 25px !important;
+    height: 25px !important;
+    right: 6px !important;
+    bottom: 6px !important;
+    font-size: 0.92rem !important;
+  }
 }
