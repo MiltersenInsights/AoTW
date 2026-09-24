@@ -51,7 +51,7 @@
             <th>Date Posted</th>
             <th>Poster</th>
             <th>Band – Album (Year)</th>
-            <th>Spotify</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody id="albumRows"></tbody>
@@ -61,6 +61,13 @@
 
   <footer class="footer">
     <a href="index.html" class="back-link">← Back to Album of the Week</a>
+    <div class="service-switch-wrap" aria-label="Choose music service">
+      <span class="service-switch-label">Open in</span>
+      <div class="service-switch">
+        <button type="button" class="service-btn active" data-service="spotify" aria-pressed="true">Spotify</button>
+        <button type="button" class="service-btn" data-service="apple" aria-pressed="false">Apple</button>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
